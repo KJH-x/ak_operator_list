@@ -1,17 +1,21 @@
 [
+
     {
       "text": "第一条内容",
+      "bgColor": "auto",
+      "opacity": "auto",
       "images": [
-        {"url": "/images/image1.jpg", "caption": "图片1"},
-        {"url": "/images/image2.jpg", "caption": "图片2"}
+        {"url": "/images/12F_12F_12F_1.jpg", "caption": "12F"},
+        {"url": "/images/A_阿_Aak_5.jpg", "caption": "A_阿_Aak_5.jpg"}
       ]
     },
     {
       "text": "第二条内容",
+      "bgColor": "auto",
+      "opacity": "auto",
       "images": [
-        {"url": "/images/image3.jpg", "caption": "图片3"},
-        {"url": "/images/image4.jpg", "caption": "图片4"}
+        {"url": "/images/ABE_安比尔_Ambriel_3.jpg", "caption": "ABE_安比尔_Ambriel_3.jpg"},
+        {"url": "/images/AD_奥达_Odda_4.jpg", "caption": "AD_奥达_Odda_4.jpg"}
       ]
     }
   ]
-  

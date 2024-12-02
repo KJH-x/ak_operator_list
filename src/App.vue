@@ -1,47 +1,55 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div id="app">
+    <header class="header">
+      <h1>我的列表</h1>
+    </header>
+    <main>
+      <ListView />
+    </main>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script>
+import ListView from './components/ListView.vue';
+
+export default {
+  name: 'App',
+  components: {
+    ListView,
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #42b983;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+  z-index: 1000;
+  user-select: none; /* 禁止选择文本 */
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+main {
+  margin-top: 70px; /* 给出 header 的高度 */
+  padding: 1em;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 水平居中 */
 }
 </style>
