@@ -1,0 +1,17 @@
+[
+    {
+      "text": "第一条内容",
+      "images": [
+        {"url": "/images/image1.jpg", "caption": "图片1"},
+        {"url": "/images/image2.jpg", "caption": "图片2"}
+      ]
+    },
+    {
+      "text": "第二条内容",
+      "images": [
+        {"url": "/images/image3.jpg", "caption": "图片3"},
+        {"url": "/images/image4.jpg", "caption": "图片4"}
+      ]
+    }
+  ]
+  
