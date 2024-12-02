@@ -1,28 +1,26 @@
 # ak_operator_list
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+Interactive Vue 3 app Tier-like Webpage for Arknights Operator Authentication Acrylic Key History, built with Vite.
 
 ## Project Setup
+
+Install dependencies:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Development
+
+Start a development server with hot-reloading:
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Build
+
+Compile and minify for production:
 
 ```sh
 npm run build
