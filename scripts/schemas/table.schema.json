@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Text content of the item"
+        },
+        "bgColor": {
+          "type": "string",
+          "description": "Background color setting, e.g., 'auto'"
+        },
+        "opacity": {
+          "type": "string",
+          "description": "Opacity setting, e.g., 'auto'"
+        },
+        "images": {
+          "type": "array",
+          "description": "List of images associated with the item",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri-reference",
+                "description": "URL of the image"
+              },
+              "caption": {
+                "type": "string",
+                "description": "Caption for the image"
+              }
+            },
+            "required": ["url", "caption"]
+          }
+        }
+      },
+      "required": ["text", "bgColor", "opacity", "images"]
+    }
+  }
+  
