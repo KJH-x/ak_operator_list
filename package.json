@@ -1,19 +1,47 @@
 {
-  "name": "ak_operator_list",
-  "version": "0.0.1",
+  "name": "ak-pass-catalog",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "test:e2e": "playwright test",
+    "test:a11y": "playwright test --grep @a11y",
+    "snapshot": "node scripts/build-catalog-v2.mjs",
+    "snapshot:v1": "node scripts/build-catalog.mjs",
+    "metadata:cache": "node scripts/build-metadata-cache.mjs --wiki public/data/wiki_list.csv",
+    "prts:dates": "node scripts/fetch-prts-release-dates.mjs",
+    "deploy": "node scripts/deploy.mjs",
+    "sync:assets": "node scripts/sync-assets.mjs",
+    "assets:manifest": "node scripts/sync-assets.mjs --manifest-only",
+    "refresh": "node scripts/refresh.mjs",
+    "build": "npm run typecheck && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "fflate": "^0.8.3",
+    "lucide-vue-next": "^0.468.0",
+    "pinyin-pro": "^3.28.2",
     "vue": "^3.5.13"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.731.1",
+    "@axe-core/playwright": "^4.10.2",
+    "@types/node": "^24.0.0",
+    "@playwright/test": "^1.50.1",
     "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/tsconfig": "^0.7.0",
+    "jsdom": "^25.0.1",
+    "sharp": "^0.35.3",
+    "typescript": "~5.7.2",
     "vite": "^6.0.1",
-    "vite-plugin-vue-devtools": "^7.6.5"
+    "vitest": "^4.1.10",
+    "vue-tsc": "^2.2.0"
+  },
+  "engines": {
+    "node": ">=20.11"
   }
 }

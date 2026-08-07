@@ -13,6 +13,14 @@ dist
 dist-ssr
 coverage
 *.local
+.env
+.env.*
+!.env.example
+test-results
+playwright-report
+.refresh-stage
+.refresh-stage-*
+.asset-cache
 
 /cypress/videos/
 /cypress/screenshots/

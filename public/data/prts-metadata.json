@@ -1,0 +1,2291 @@
+{
+  "version": 1,
+  "fetchedAt": "2026-08-07T13:18:27.452Z",
+  "source": "https://prts.wiki/w/干员上线时间一览",
+  "records": {
+    "Lancet-2": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 主线剧情"
+    },
+    "Castle-3": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募"
+    },
+    "夜刀": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募"
+    },
+    "黑角": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募"
+    },
+    "巡林者": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募"
+    },
+    "杜林": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 主线剧情"
+    },
+    "12F": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 主线剧情"
+    },
+    "芬": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访 主线剧情"
+    },
+    "香草": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "翎羽": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访 主线剧情"
+    },
+    "玫兰莎": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访 主线剧情"
+    },
+    "卡缇": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "标准寻访 中坚寻访"
+    },
+    "米格鲁": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访 主线剧情"
+    },
+    "克洛丝": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访 主线剧情"
+    },
+    "安德切尔": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 主线剧情"
+    },
+    "炎熔": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访 主线剧情"
+    },
+    "芙蓉": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访 主线剧情"
+    },
+    "安赛尔": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访 主线剧情"
+    },
+    "史都华德": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "梓兰": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访 主线剧情"
+    },
+    "夜烟": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "远山": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "杰西卡": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访 主线剧情"
+    },
+    "流星": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "白雪": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "讯使": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "信用交易所"
+    },
+    "清道夫": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "红豆": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "杜宾": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "缠丸": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "霜叶": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "艾丝黛尔": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募"
+    },
+    "慕斯": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "砾": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "暗索": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "末药": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "嘉维尔": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "信用交易所"
+    },
+    "调香师": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "角峰": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "蛇屠箱": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "古米": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "深海色": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "标准寻访 中坚寻访"
+    },
+    "地灵": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "阿消": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访 主线剧情"
+    },
+    "白面鸮": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "凛冬": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "德克萨斯": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访 常驻赠送"
+    },
+    "芙兰卡": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "中坚寻访"
+    },
+    "因陀罗": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募"
+    },
+    "拉普兰德": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "中坚寻访"
+    },
+    "幽灵鲨": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "蓝毒": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "白金": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "陨星": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "阿米娅": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "主线剧情"
+    },
+    "天火": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "中坚寻访"
+    },
+    "梅尔": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "赫默": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "华法琳": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "临光": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "红": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "雷蛇": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "可颂": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "火神": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募"
+    },
+    "普罗旺斯": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "守林人": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "崖心": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "初雪": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "真理": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "空": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "中坚寻访"
+    },
+    "狮蝎": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "食铁兽": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "能天使": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "推进之王": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "伊芙利特": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "艾雅法拉": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "中坚寻访"
+    },
+    "安洁莉娜": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "中坚寻访"
+    },
+    "闪灵": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "夜莺": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "星熊": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "塞雷娅": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "银灰": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "暴行": {
+      "operatorReleaseDate": "2019-04-30",
+      "route": "开服预约奖励",
+      "obtainMethod": "预约奖励 周年奖励"
+    },
+    "空爆": {
+      "operatorReleaseDate": "2019-05-23",
+      "route": "[标准寻访]银灰色的荣耀",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "月见夜": {
+      "operatorReleaseDate": "2019-05-30",
+      "route": "[标准寻访]搅动潮汐之剑",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "猎蜂": {
+      "operatorReleaseDate": "2019-05-30",
+      "route": "[标准寻访]搅动潮汐之剑",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "夜魔": {
+      "operatorReleaseDate": "2019-05-30",
+      "route": "[标准寻访]搅动潮汐之剑",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "格拉尼": {
+      "operatorReleaseDate": "2019-05-30",
+      "route": "SideStory「骑兵与猎人」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "斯卡蒂": {
+      "operatorReleaseDate": "2019-05-30",
+      "route": "[标准寻访]搅动潮汐之剑",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "泡普卡": {
+      "operatorReleaseDate": "2019-07-09",
+      "route": "[标准寻访]鞘中赤红",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "斑点": {
+      "operatorReleaseDate": "2019-07-09",
+      "route": "[标准寻访]鞘中赤红",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "格雷伊": {
+      "operatorReleaseDate": "2019-07-09",
+      "route": "[标准寻访]鞘中赤红",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "诗怀雅": {
+      "operatorReleaseDate": "2019-07-09",
+      "route": "[标准寻访]鞘中赤红",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "陈": {
+      "operatorReleaseDate": "2019-07-09",
+      "route": "[标准寻访]鞘中赤红",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "苏苏洛": {
+      "operatorReleaseDate": "2019-08-27",
+      "route": "[标准寻访]深夏的守夜人",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "锡兰": {
+      "operatorReleaseDate": "2019-08-27",
+      "route": "SideStory「火蓝之心」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "格劳克斯": {
+      "operatorReleaseDate": "2019-08-27",
+      "route": "[标准寻访]深夏的守夜人",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "黑": {
+      "operatorReleaseDate": "2019-08-27",
+      "route": "[标准寻访]深夏的守夜人",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "桃金娘": {
+      "operatorReleaseDate": "2019-09-10",
+      "route": "[标准寻访]久铸尘铁",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "星极": {
+      "operatorReleaseDate": "2019-09-10",
+      "route": "[标准寻访]久铸尘铁",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "赫拉格": {
+      "operatorReleaseDate": "2019-09-10",
+      "route": "[标准寻访]久铸尘铁",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "坚雷": {
+      "operatorReleaseDate": "2019-10-01",
+      "route": "金秋活动 信用交易所可聘用干员追加",
+      "obtainMethod": "信用交易所"
+    },
+    "红云": {
+      "operatorReleaseDate": "2019-10-15",
+      "route": "[标准寻访]冰封原野",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "炎客": {
+      "operatorReleaseDate": "2019-10-15",
+      "route": "微型故事集「战地秘闻」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "送葬人": {
+      "operatorReleaseDate": "2019-10-15",
+      "route": "[标准寻访]冰封原野",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "麦哲伦": {
+      "operatorReleaseDate": "2019-10-15",
+      "route": "[标准寻访]冰封原野",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "伊桑": {
+      "operatorReleaseDate": "2019-11-01",
+      "route": "「感谢庆典」纪念活动 「采购凭证商店」可兑换干员更新",
+      "obtainMethod": "凭证交易所(采购)"
+    },
+    "微风": {
+      "operatorReleaseDate": "2019-11-01",
+      "route": "「感谢庆典」纪念活动 「采购凭证商店」可兑换干员更新",
+      "obtainMethod": "凭证交易所(采购)"
+    },
+    "梅": {
+      "operatorReleaseDate": "2019-11-19",
+      "route": "[标准寻访]锁与匙的守卫者",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "拜松": {
+      "operatorReleaseDate": "2019-11-19",
+      "route": "SideStory「喧闹法则」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "槐琥": {
+      "operatorReleaseDate": "2019-11-19",
+      "route": "[标准寻访]锁与匙的守卫者",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "莫斯提马": {
+      "operatorReleaseDate": "2019-11-19",
+      "route": "[标准寻访]锁与匙的守卫者",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "苇草": {
+      "operatorReleaseDate": "2019-12-10",
+      "route": "[标准寻访]凝电之钻",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "布洛卡": {
+      "operatorReleaseDate": "2019-12-10",
+      "route": "[标准寻访]凝电之钻",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "安比尔": {
+      "operatorReleaseDate": "2019-12-24",
+      "route": "[标准寻访]热情，膨胀，爆发！",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "灰喉": {
+      "operatorReleaseDate": "2019-12-24",
+      "route": "[标准寻访]热情，膨胀，爆发！",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "煌": {
+      "operatorReleaseDate": "2019-12-24",
+      "route": "[标准寻访]热情，膨胀，爆发！",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "雪雉": {
+      "operatorReleaseDate": "2020-01-09",
+      "route": "微型故事集「洪炉示岁」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "吽": {
+      "operatorReleaseDate": "2020-01-16",
+      "route": "[限定寻访]地生五金",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "阿": {
+      "operatorReleaseDate": "2020-01-16",
+      "route": "[限定寻访]地生五金",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "年": {
+      "operatorReleaseDate": "2020-01-16",
+      "route": "[限定寻访]地生五金",
+      "obtainMethod": "限定寻访"
+    },
+    "惊蛰": {
+      "operatorReleaseDate": "2020-02-25",
+      "route": "[标准寻访]百种兵器",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "刻俄柏": {
+      "operatorReleaseDate": "2020-02-25",
+      "route": "[标准寻访]百种兵器",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "清流": {
+      "operatorReleaseDate": "2020-03-03",
+      "route": "「万类共生」联合公益活动",
+      "obtainMethod": "限时礼包 公开招募"
+    },
+    "宴": {
+      "operatorReleaseDate": "2020-03-17",
+      "route": "[标准寻访]草垛上的风笛声",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "柏喙": {
+      "operatorReleaseDate": "2020-03-17",
+      "route": "危机合约#0赛季「荒芜行动」",
+      "obtainMethod": "活动获得 凭证交易所(高级/通用)"
+    },
+    "慑砂": {
+      "operatorReleaseDate": "2020-03-17",
+      "route": "[标准寻访]草垛上的风笛声",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "风笛": {
+      "operatorReleaseDate": "2020-03-17",
+      "route": "[标准寻访]草垛上的风笛声",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "断罪者": {
+      "operatorReleaseDate": "2020-04-01",
+      "route": "2020愚人节活动",
+      "obtainMethod": "活动获得"
+    },
+    "刻刀": {
+      "operatorReleaseDate": "2020-04-21",
+      "route": "[标准寻访]往日幻象",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "铸铁": {
+      "operatorReleaseDate": "2020-04-21",
+      "route": "SideStory「生于黑夜」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "巫恋": {
+      "operatorReleaseDate": "2020-04-21",
+      "route": "[标准寻访]往日幻象",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "傀影": {
+      "operatorReleaseDate": "2020-04-21",
+      "route": "[标准寻访]往日幻象",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "THRM-EX": {
+      "operatorReleaseDate": "2020-05-01",
+      "route": "一周年庆典「公开招募」干员更新",
+      "obtainMethod": "公开招募 主线剧情 活动获得"
+    },
+    "极境": {
+      "operatorReleaseDate": "2020-05-01",
+      "route": "[限定寻访]遗愿焰火",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "温蒂": {
+      "operatorReleaseDate": "2020-05-01",
+      "route": "[限定寻访]遗愿焰火",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "W": {
+      "operatorReleaseDate": "2020-05-01",
+      "route": "[限定寻访]遗愿焰火",
+      "obtainMethod": "限定寻访"
+    },
+    "石棉": {
+      "operatorReleaseDate": "2020-06-02",
+      "route": "[标准寻访]雾漫荒林",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "月禾": {
+      "operatorReleaseDate": "2020-06-02",
+      "route": "[标准寻访]雾漫荒林",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "波登可": {
+      "operatorReleaseDate": "2020-06-18",
+      "route": "[标准寻访]雪落晨心",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "苦艾": {
+      "operatorReleaseDate": "2020-06-18",
+      "route": "故事集「乌萨斯的孩子们」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "莱恩哈特": {
+      "operatorReleaseDate": "2020-06-18",
+      "route": "[标准寻访]雪落晨心",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "早露": {
+      "operatorReleaseDate": "2020-06-18",
+      "route": "[标准寻访]雪落晨心",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "卡达": {
+      "operatorReleaseDate": "2020-07-09",
+      "route": "[标准寻访]君影轻灵",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "亚叶": {
+      "operatorReleaseDate": "2020-07-09",
+      "route": "SideStory「沃伦姆德的薄暮」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "断崖": {
+      "operatorReleaseDate": "2020-07-09",
+      "route": "[标准寻访]君影轻灵",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "铃兰": {
+      "operatorReleaseDate": "2020-07-09",
+      "route": "[标准寻访]君影轻灵",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "稀音": {
+      "operatorReleaseDate": "2020-07-28",
+      "route": "危机合约#2赛季「利刃行动」",
+      "obtainMethod": "活动获得 凭证交易所(高级/通用)"
+    },
+    "蜜蜡": {
+      "operatorReleaseDate": "2020-07-28",
+      "route": "[标准寻访]流沙涡旋",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "贾维": {
+      "operatorReleaseDate": "2020-07-28",
+      "route": "[标准寻访]流沙涡旋",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "孑": {
+      "operatorReleaseDate": "2020-08-11",
+      "route": "[标准寻访]不羁逆流",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "安哲拉": {
+      "operatorReleaseDate": "2020-08-11",
+      "route": "[标准寻访]不羁逆流",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "棘刺": {
+      "operatorReleaseDate": "2020-08-11",
+      "route": "[标准寻访]不羁逆流",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "预备干员-后勤": {
+      "operatorReleaseDate": "2020-08-25",
+      "route": "集成战略「刻俄柏的灰蕈迷境」",
+      "obtainMethod": "无"
+    },
+    "预备干员-术师": {
+      "operatorReleaseDate": "2020-08-25",
+      "route": "集成战略「刻俄柏的灰蕈迷境」",
+      "obtainMethod": "无"
+    },
+    "预备干员-狙击": {
+      "operatorReleaseDate": "2020-08-25",
+      "route": "集成战略「刻俄柏的灰蕈迷境」",
+      "obtainMethod": "无"
+    },
+    "预备干员-近战": {
+      "operatorReleaseDate": "2020-08-25",
+      "route": "集成战略「刻俄柏的灰蕈迷境」",
+      "obtainMethod": "无"
+    },
+    "Stormeye": {
+      "operatorReleaseDate": "2020-08-25",
+      "route": "集成战略「刻俄柏的灰蕈迷境」",
+      "obtainMethod": "无"
+    },
+    "Touch": {
+      "operatorReleaseDate": "2020-08-25",
+      "route": "集成战略「刻俄柏的灰蕈迷境」",
+      "obtainMethod": "无"
+    },
+    "Pith": {
+      "operatorReleaseDate": "2020-08-25",
+      "route": "集成战略「刻俄柏的灰蕈迷境」",
+      "obtainMethod": "无"
+    },
+    "Sharp": {
+      "operatorReleaseDate": "2020-08-25",
+      "route": "集成战略「刻俄柏的灰蕈迷境」",
+      "obtainMethod": "无"
+    },
+    "酸糖": {
+      "operatorReleaseDate": "2020-08-25",
+      "route": "[标准寻访]燃钢之心:暴躁铁皮",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "特米米": {
+      "operatorReleaseDate": "2020-08-25",
+      "route": "SideStory「密林悍将归来」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "燧石": {
+      "operatorReleaseDate": "2020-08-25",
+      "route": "[标准寻访]燃钢之心:暴躁铁皮",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "森蚺": {
+      "operatorReleaseDate": "2020-08-25",
+      "route": "[标准寻访]燃钢之心:暴躁铁皮",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "芳汀": {
+      "operatorReleaseDate": "2020-09-24",
+      "route": "[标准寻访]无拘熔火",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "薄绿": {
+      "operatorReleaseDate": "2020-09-24",
+      "route": "故事集「踏寻往昔之风」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "四月": {
+      "operatorReleaseDate": "2020-09-24",
+      "route": "[标准寻访]无拘熔火",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "史尔特尔": {
+      "operatorReleaseDate": "2020-09-24",
+      "route": "[标准寻访]无拘熔火",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "泡泡": {
+      "operatorReleaseDate": "2020-10-15",
+      "route": "[标准寻访]瑕光微明",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "鞭刃": {
+      "operatorReleaseDate": "2020-10-15",
+      "route": "SideStory「玛莉娅·临光」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "奥斯塔": {
+      "operatorReleaseDate": "2020-10-15",
+      "route": "[标准寻访]瑕光微明",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "瑕光": {
+      "operatorReleaseDate": "2020-10-15",
+      "route": "[标准寻访]瑕光微明",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "杰克": {
+      "operatorReleaseDate": "2020-11-01",
+      "route": "[限定寻访]勿忘我",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "絮雨": {
+      "operatorReleaseDate": "2020-11-01",
+      "route": "[限定寻访]勿忘我",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "泥岩": {
+      "operatorReleaseDate": "2020-11-01",
+      "route": "[限定寻访]勿忘我",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "迷迭香": {
+      "operatorReleaseDate": "2020-11-01",
+      "route": "[限定寻访]勿忘我",
+      "obtainMethod": "限定寻访"
+    },
+    "阿米娅(近卫)": {
+      "operatorReleaseDate": "2020-11-01",
+      "route": "主线第八章节「怒号光明」",
+      "obtainMethod": "主线剧情"
+    },
+    "松果": {
+      "operatorReleaseDate": "2020-12-17",
+      "route": "[标准寻访]自由的囚徒",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "罗宾": {
+      "operatorReleaseDate": "2020-12-17",
+      "route": "SideStory「孤岛风云」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "卡夫卡": {
+      "operatorReleaseDate": "2020-12-17",
+      "route": "[标准寻访]自由的囚徒",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "山": {
+      "operatorReleaseDate": "2020-12-17",
+      "route": "[标准寻访]自由的囚徒",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "豆苗": {
+      "operatorReleaseDate": "2021-01-05",
+      "route": "[标准寻访]麦穗与赞美诗",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "爱丽丝": {
+      "operatorReleaseDate": "2021-01-05",
+      "route": "[标准寻访]麦穗与赞美诗",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "空弦": {
+      "operatorReleaseDate": "2021-01-05",
+      "route": "[标准寻访]麦穗与赞美诗",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "图耶": {
+      "operatorReleaseDate": "2021-01-19",
+      "route": "危机合约#4赛季「铅封行动」",
+      "obtainMethod": "活动获得 凭证交易所(高级/通用)"
+    },
+    "炎狱炎熔": {
+      "operatorReleaseDate": "2021-02-05",
+      "route": "SideStory「画中人」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "乌有": {
+      "operatorReleaseDate": "2021-02-05",
+      "route": "[限定寻访]月隐晦明",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "嵯峨": {
+      "operatorReleaseDate": "2021-02-05",
+      "route": "[限定寻访]月隐晦明",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "夕": {
+      "operatorReleaseDate": "2021-02-05",
+      "route": "[限定寻访]月隐晦明",
+      "obtainMethod": "限定寻访"
+    },
+    "战车": {
+      "operatorReleaseDate": "2021-03-09",
+      "route": "SideStory「源石尘行动」",
+      "obtainMethod": "活动获得"
+    },
+    "闪击": {
+      "operatorReleaseDate": "2021-03-09",
+      "route": "[精英战术专家寻访]进攻、防守、战术交汇",
+      "obtainMethod": "联动寻访"
+    },
+    "霜华": {
+      "operatorReleaseDate": "2021-03-09",
+      "route": "[精英战术专家寻访]进攻、防守、战术交汇",
+      "obtainMethod": "联动寻访"
+    },
+    "灰烬": {
+      "operatorReleaseDate": "2021-03-09",
+      "route": "[精英战术专家寻访]进攻、防守、战术交汇",
+      "obtainMethod": "联动寻访"
+    },
+    "暴雨": {
+      "operatorReleaseDate": "2021-04-15",
+      "route": "SideStory「遗尘漫步」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "熔泉": {
+      "operatorReleaseDate": "2021-04-15",
+      "route": "[标准寻访]沙海过客",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "异客": {
+      "operatorReleaseDate": "2021-04-15",
+      "route": "[标准寻访]沙海过客",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "赤冬": {
+      "operatorReleaseDate": "2021-05-01",
+      "route": "[限定寻访]深悼",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "歌蕾蒂娅": {
+      "operatorReleaseDate": "2021-05-01",
+      "route": "SideStory「覆潮之下」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "凯尔希": {
+      "operatorReleaseDate": "2021-05-01",
+      "route": "[限定寻访]深悼",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "浊心斯卡蒂": {
+      "operatorReleaseDate": "2021-05-01",
+      "route": "[限定寻访]深悼",
+      "obtainMethod": "限定寻访"
+    },
+    "深靛": {
+      "operatorReleaseDate": "2021-06-01",
+      "route": "[标准寻访]革新交响曲",
+      "obtainMethod": "公开招募 标准寻访 中坚寻访"
+    },
+    "贝娜": {
+      "operatorReleaseDate": "2021-06-01",
+      "route": "故事集「灯火序曲」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "绮良": {
+      "operatorReleaseDate": "2021-06-01",
+      "route": "[标准寻访]革新交响曲",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "卡涅利安": {
+      "operatorReleaseDate": "2021-06-01",
+      "route": "[标准寻访]革新交响曲",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "帕拉斯": {
+      "operatorReleaseDate": "2021-07-02",
+      "route": "[标准寻访]从星火中来",
+      "obtainMethod": "公开招募 中坚寻访"
+    },
+    "龙舌兰": {
+      "operatorReleaseDate": "2021-08-03",
+      "route": "SideStory「多索雷斯假日」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "羽毛笔": {
+      "operatorReleaseDate": "2021-08-03",
+      "route": "「限定寻访·夏季」盛夏新星",
+      "obtainMethod": "中坚寻访 公开招募"
+    },
+    "水月": {
+      "operatorReleaseDate": "2021-08-03",
+      "route": "「限定寻访·夏季」盛夏新星",
+      "obtainMethod": "中坚寻访 公开招募"
+    },
+    "假日威龙陈": {
+      "operatorReleaseDate": "2021-08-03",
+      "route": "「限定寻访·夏季」盛夏新星",
+      "obtainMethod": "限定寻访"
+    },
+    "罗比菈塔": {
+      "operatorReleaseDate": "2021-09-17",
+      "route": "[标准寻访]小丘上的眠柳",
+      "obtainMethod": "标准寻访 中坚寻访"
+    },
+    "桑葚": {
+      "operatorReleaseDate": "2021-09-17",
+      "route": "[标准寻访]小丘上的眠柳",
+      "obtainMethod": "中坚寻访"
+    },
+    "琴柳": {
+      "operatorReleaseDate": "2021-09-17",
+      "route": "[标准寻访]小丘上的眠柳",
+      "obtainMethod": "中坚寻访"
+    },
+    "灰毫": {
+      "operatorReleaseDate": "2021-10-15",
+      "route": "[标准寻访]漂泊于风",
+      "obtainMethod": "中坚寻访"
+    },
+    "远牙": {
+      "operatorReleaseDate": "2021-10-15",
+      "route": "[标准寻访]漂泊于风",
+      "obtainMethod": "中坚寻访"
+    },
+    "正义骑士号": {
+      "operatorReleaseDate": "2021-11-01",
+      "route": "「感谢庆典」 「公开招募」干员更新",
+      "obtainMethod": "公开招募 活动获得"
+    },
+    "布丁": {
+      "operatorReleaseDate": "2021-11-01",
+      "route": "「感谢庆典」纪念活动 「采购凭证商店」可兑换干员更新",
+      "obtainMethod": "凭证交易所(采购)"
+    },
+    "蜜莓": {
+      "operatorReleaseDate": "2021-11-01",
+      "route": "「感谢庆典」纪念活动 「采购凭证商店」可兑换干员更新",
+      "obtainMethod": "凭证交易所(采购)"
+    },
+    "野鬃": {
+      "operatorReleaseDate": "2021-11-01",
+      "route": "SideStory「长夜临光」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "蚀清": {
+      "operatorReleaseDate": "2021-11-01",
+      "route": "「限定寻访·庆典」循光道途",
+      "obtainMethod": "中坚寻访"
+    },
+    "焰尾": {
+      "operatorReleaseDate": "2021-11-01",
+      "route": "「限定寻访·庆典」循光道途",
+      "obtainMethod": "中坚寻访"
+    },
+    "耀骑士临光": {
+      "operatorReleaseDate": "2021-11-01",
+      "route": "「限定寻访·庆典」循光道途",
+      "obtainMethod": "限定寻访"
+    },
+    "耶拉": {
+      "operatorReleaseDate": "2021-12-21",
+      "route": "SideStory「风雪过境」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "极光": {
+      "operatorReleaseDate": "2021-12-21",
+      "route": "[标准寻访]雪融之诺",
+      "obtainMethod": "中坚寻访"
+    },
+    "灵知": {
+      "operatorReleaseDate": "2021-12-21",
+      "route": "[标准寻访]雪融之诺",
+      "obtainMethod": "中坚寻访"
+    },
+    "暮落(集成战略)": {
+      "operatorReleaseDate": "2022-01-05",
+      "route": "集成战略「傀影与猩红孤钻」",
+      "obtainMethod": "无"
+    },
+    "暮落": {
+      "operatorReleaseDate": "2022-01-05",
+      "route": "集成战略「傀影与猩红孤钻」",
+      "obtainMethod": "活动获得"
+    },
+    "九色鹿": {
+      "operatorReleaseDate": "2022-01-10",
+      "route": "“吉兆呈祥”限时登录活动",
+      "obtainMethod": "活动获得"
+    },
+    "寒芒克洛丝": {
+      "operatorReleaseDate": "2022-01-25",
+      "route": "SideStory「将进酒」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "夜半": {
+      "operatorReleaseDate": "2022-01-25",
+      "route": "「限定寻访·春节」浊酒澄心",
+      "obtainMethod": "中坚寻访"
+    },
+    "老鲤": {
+      "operatorReleaseDate": "2022-01-25",
+      "route": "「限定寻访·春节」浊酒澄心",
+      "obtainMethod": "中坚寻访"
+    },
+    "令": {
+      "operatorReleaseDate": "2022-01-25",
+      "route": "「限定寻访·春节」浊酒澄心",
+      "obtainMethod": "限定寻访"
+    },
+    "夏栎": {
+      "operatorReleaseDate": "2022-02-15",
+      "route": "[标准寻访]火花绽放",
+      "obtainMethod": "中坚寻访"
+    },
+    "澄闪": {
+      "operatorReleaseDate": "2022-02-15",
+      "route": "[标准寻访]火花绽放",
+      "obtainMethod": "中坚寻访"
+    },
+    "见行者": {
+      "operatorReleaseDate": "2022-03-15",
+      "route": "SideStory「吾导先路」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "风丸": {
+      "operatorReleaseDate": "2022-03-15",
+      "route": "[标准寻访]炽焰无霾",
+      "obtainMethod": "中坚寻访"
+    },
+    "菲亚梅塔": {
+      "operatorReleaseDate": "2022-03-15",
+      "route": "[标准寻访]炽焰无霾",
+      "obtainMethod": "中坚寻访"
+    },
+    "褐果": {
+      "operatorReleaseDate": "2022-04-14",
+      "route": "[标准寻访]奔崖怒号",
+      "obtainMethod": "标准寻访 中坚寻访"
+    },
+    "海蒂": {
+      "operatorReleaseDate": "2022-04-14",
+      "route": "主线第十章节「破碎日冕」",
+      "obtainMethod": "主线剧情"
+    },
+    "洛洛": {
+      "operatorReleaseDate": "2022-04-14",
+      "route": "[标准寻访]奔崖怒号",
+      "obtainMethod": "中坚寻访"
+    },
+    "号角": {
+      "operatorReleaseDate": "2022-04-14",
+      "route": "[标准寻访]奔崖怒号",
+      "obtainMethod": "中坚寻访"
+    },
+    "掠风": {
+      "operatorReleaseDate": "2022-05-01",
+      "route": "[限定寻访·庆典]海蚀",
+      "obtainMethod": "中坚寻访"
+    },
+    "流明": {
+      "operatorReleaseDate": "2022-05-01",
+      "route": "SideStory「愚人号」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "艾丽妮": {
+      "operatorReleaseDate": "2022-05-01",
+      "route": "[限定寻访·庆典]海蚀",
+      "obtainMethod": "中坚寻访"
+    },
+    "归溟幽灵鲨": {
+      "operatorReleaseDate": "2022-05-01",
+      "route": "[限定寻访·庆典]海蚀",
+      "obtainMethod": "限定寻访"
+    },
+    "埃拉托": {
+      "operatorReleaseDate": "2022-05-19",
+      "route": "危机合约#9赛季「渊默行动」",
+      "obtainMethod": "活动获得 凭证交易所(高级/通用)"
+    },
+    "车尔尼": {
+      "operatorReleaseDate": "2022-06-09",
+      "route": "SideStory「尘影余音」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "濯尘芙蓉": {
+      "operatorReleaseDate": "2022-06-09",
+      "route": "[标准寻访]不协和音程",
+      "obtainMethod": "中坚寻访"
+    },
+    "黑键": {
+      "operatorReleaseDate": "2022-06-09",
+      "route": "[标准寻访]不协和音程",
+      "obtainMethod": "中坚寻访"
+    },
+    "星源": {
+      "operatorReleaseDate": "2022-07-05",
+      "route": "SideStory「绿野幻梦」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "承曦格雷伊": {
+      "operatorReleaseDate": "2022-07-05",
+      "route": "[标准寻访]沙洲引路人",
+      "obtainMethod": "中坚寻访"
+    },
+    "多萝西": {
+      "operatorReleaseDate": "2022-07-05",
+      "route": "[标准寻访]沙洲引路人",
+      "obtainMethod": "中坚寻访"
+    },
+    "至简": {
+      "operatorReleaseDate": "2022-08-11",
+      "route": "SideStory「理想城：长夏狂欢季」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "晓歌": {
+      "operatorReleaseDate": "2022-08-11",
+      "route": "[限定寻访·夏季]巨斧与笔尖",
+      "obtainMethod": "标准寻访"
+    },
+    "鸿雪": {
+      "operatorReleaseDate": "2022-08-11",
+      "route": "[限定寻访·夏季]巨斧与笔尖",
+      "obtainMethod": "标准寻访"
+    },
+    "百炼嘉维尔": {
+      "operatorReleaseDate": "2022-08-11",
+      "route": "[限定寻访·夏季]巨斧与笔尖",
+      "obtainMethod": "限定寻访"
+    },
+    "但书": {
+      "operatorReleaseDate": "2022-09-08",
+      "route": "[标准寻访]未曾起誓",
+      "obtainMethod": "标准寻访"
+    },
+    "玛恩纳": {
+      "operatorReleaseDate": "2022-09-08",
+      "route": "[标准寻访]未曾起誓",
+      "obtainMethod": "标准寻访"
+    },
+    "罗小黑": {
+      "operatorReleaseDate": "2022-09-15",
+      "route": "故事集「好久不见」",
+      "obtainMethod": "活动获得"
+    },
+    "预备干员-重装": {
+      "operatorReleaseDate": "2022-09-27",
+      "route": "集成战略「水月与深蓝之树」",
+      "obtainMethod": "无"
+    },
+    "郁金香": {
+      "operatorReleaseDate": "2022-09-27",
+      "route": "集成战略「水月与深蓝之树」",
+      "obtainMethod": "无"
+    },
+    "海沫": {
+      "operatorReleaseDate": "2022-09-27",
+      "route": "集成战略「水月与深蓝之树」",
+      "obtainMethod": "活动获得"
+    },
+    "铅踝": {
+      "operatorReleaseDate": "2022-10-11",
+      "route": "[标准寻访]轴承与火星",
+      "obtainMethod": "标准寻访 中坚寻访"
+    },
+    "达格达": {
+      "operatorReleaseDate": "2022-10-11",
+      "route": "主线第十一章节「淬火尘霾」",
+      "obtainMethod": "主线剧情"
+    },
+    "明椒": {
+      "operatorReleaseDate": "2022-10-11",
+      "route": "[标准寻访]轴承与火星",
+      "obtainMethod": "标准寻访"
+    },
+    "白铁": {
+      "operatorReleaseDate": "2022-10-11",
+      "route": "[标准寻访]轴承与火星",
+      "obtainMethod": "标准寻访"
+    },
+    "石英": {
+      "operatorReleaseDate": "2022-11-01",
+      "route": "「感谢庆典」纪念活动 「采购凭证商店」可兑换干员更新",
+      "obtainMethod": "凭证交易所(采购)"
+    },
+    "雪绒": {
+      "operatorReleaseDate": "2022-11-01",
+      "route": "「感谢庆典」纪念活动 「采购凭证商店」可兑换干员更新",
+      "obtainMethod": "凭证交易所(采购)"
+    },
+    "子月": {
+      "operatorReleaseDate": "2022-11-01",
+      "route": "[限定寻访·庆典]斩荆辟路",
+      "obtainMethod": "标准寻访"
+    },
+    "伺夜": {
+      "operatorReleaseDate": "2022-11-01",
+      "route": "SideStory「叙拉古人」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "斥罪": {
+      "operatorReleaseDate": "2022-11-01",
+      "route": "[限定寻访·庆典]斩荆辟路",
+      "obtainMethod": "标准寻访"
+    },
+    "缄默德克萨斯": {
+      "operatorReleaseDate": "2022-11-01",
+      "route": "[限定寻访·庆典]斩荆辟路",
+      "obtainMethod": "限定寻访"
+    },
+    "谜图": {
+      "operatorReleaseDate": "2022-12-15",
+      "route": "SideStory「照我以火」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "和弦": {
+      "operatorReleaseDate": "2022-12-15",
+      "route": "[标准寻访]枯焰生花",
+      "obtainMethod": "标准寻访"
+    },
+    "焰影苇草": {
+      "operatorReleaseDate": "2022-12-15",
+      "route": "[标准寻访]枯焰生花",
+      "obtainMethod": "标准寻访"
+    },
+    "截云": {
+      "operatorReleaseDate": "2023-01-17",
+      "route": "SideStory「登临意」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "火哨": {
+      "operatorReleaseDate": "2023-01-17",
+      "route": "「限定寻访·春节」万象伶仃",
+      "obtainMethod": "标准寻访"
+    },
+    "林": {
+      "operatorReleaseDate": "2023-01-17",
+      "route": "「限定寻访·春节」万象伶仃",
+      "obtainMethod": "标准寻访"
+    },
+    "重岳": {
+      "operatorReleaseDate": "2023-01-17",
+      "route": "「限定寻访·春节」万象伶仃",
+      "obtainMethod": "限定寻访"
+    },
+    "铎铃": {
+      "operatorReleaseDate": "2023-02-14",
+      "route": "[标准寻访]春江逢雪",
+      "obtainMethod": "标准寻访"
+    },
+    "仇白": {
+      "operatorReleaseDate": "2023-02-14",
+      "route": "[标准寻访]春江逢雪",
+      "obtainMethod": "标准寻访"
+    },
+    "泰拉大陆调查团": {
+      "operatorReleaseDate": "2023-03-07",
+      "route": "SideStory「落叶逐火」",
+      "obtainMethod": "活动获得"
+    },
+    "火龙S黑角": {
+      "operatorReleaseDate": "2023-03-07",
+      "route": "[狩猎凯旋干员寻访]砺火成锋",
+      "obtainMethod": "联动寻访"
+    },
+    "麒麟R夜刀": {
+      "operatorReleaseDate": "2023-03-07",
+      "route": "[狩猎凯旋干员寻访]砺火成锋",
+      "obtainMethod": "联动寻访"
+    },
+    "U-Official": {
+      "operatorReleaseDate": "2023-04-01",
+      "route": "2023愚人节活动",
+      "obtainMethod": "活动获得"
+    },
+    "休谟斯": {
+      "operatorReleaseDate": "2023-04-06",
+      "route": "[标准寻访]犹在影中",
+      "obtainMethod": "标准寻访 中坚寻访"
+    },
+    "摩根": {
+      "operatorReleaseDate": "2023-04-06",
+      "route": "主线第十二章节「惊霆无声」",
+      "obtainMethod": "主线剧情"
+    },
+    "洋灰": {
+      "operatorReleaseDate": "2023-04-06",
+      "route": "[标准寻访]犹在影中",
+      "obtainMethod": "标准寻访"
+    },
+    "伊内丝": {
+      "operatorReleaseDate": "2023-04-06",
+      "route": "[标准寻访]犹在影中",
+      "obtainMethod": "标准寻访"
+    },
+    "玫拉": {
+      "operatorReleaseDate": "2023-05-01",
+      "route": "「限定寻访·庆典」真理孑然",
+      "obtainMethod": "标准寻访"
+    },
+    "淬羽赫默": {
+      "operatorReleaseDate": "2023-05-01",
+      "route": "SideStory「孤星」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "霍尔海雅": {
+      "operatorReleaseDate": "2023-05-01",
+      "route": "「限定寻访·庆典」真理孑然",
+      "obtainMethod": "标准寻访"
+    },
+    "缪尔赛思": {
+      "operatorReleaseDate": "2023-05-01",
+      "route": "「限定寻访·庆典」真理孑然",
+      "obtainMethod": "限定寻访"
+    },
+    "Friston-3": {
+      "operatorReleaseDate": "2023-05-22",
+      "route": "特别行动「尖灭测试作战」",
+      "obtainMethod": "公开招募 活动获得"
+    },
+    "隐现": {
+      "operatorReleaseDate": "2023-06-08",
+      "route": "SideStory「空想花庭」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "空构": {
+      "operatorReleaseDate": "2023-06-08",
+      "route": "[标准寻访]执裁者",
+      "obtainMethod": "标准寻访"
+    },
+    "圣约送葬人": {
+      "operatorReleaseDate": "2023-06-08",
+      "route": "[标准寻访]执裁者",
+      "obtainMethod": "标准寻访"
+    },
+    "寒檀": {
+      "operatorReleaseDate": "2023-07-06",
+      "route": "[标准寻访]射落灾异的风暴",
+      "obtainMethod": "标准寻访"
+    },
+    "提丰": {
+      "operatorReleaseDate": "2023-07-06",
+      "route": "[标准寻访]射落灾异的风暴",
+      "obtainMethod": "标准寻访"
+    },
+    "凛视": {
+      "operatorReleaseDate": "2023-07-13",
+      "route": "集成战略「探索者的银凇止境」",
+      "obtainMethod": "活动获得"
+    },
+    "苍苔": {
+      "operatorReleaseDate": "2023-08-01",
+      "route": "SideStory「火山旅梦」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "青枳": {
+      "operatorReleaseDate": "2023-08-01",
+      "route": "「限定寻访·夏季」云间清醒梦",
+      "obtainMethod": "标准寻访"
+    },
+    "琳琅诗怀雅": {
+      "operatorReleaseDate": "2023-08-01",
+      "route": "「限定寻访·夏季」云间清醒梦",
+      "obtainMethod": "标准寻访"
+    },
+    "纯烬艾雅法拉": {
+      "operatorReleaseDate": "2023-08-01",
+      "route": "「限定寻访·夏季」云间清醒梦",
+      "obtainMethod": "限定寻访"
+    },
+    "冰酿": {
+      "operatorReleaseDate": "2023-09-05",
+      "route": "SideStory「不义之财」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "杏仁": {
+      "operatorReleaseDate": "2023-09-05",
+      "route": "[标准寻访]鸣铳",
+      "obtainMethod": "标准寻访"
+    },
+    "涤火杰西卡": {
+      "operatorReleaseDate": "2023-09-05",
+      "route": "[标准寻访]鸣铳",
+      "obtainMethod": "标准寻访"
+    },
+    "维荻": {
+      "operatorReleaseDate": "2023-10-08",
+      "route": "[标准寻访]烁尘烟中",
+      "obtainMethod": "标准寻访 中坚寻访"
+    },
+    "戴菲恩": {
+      "operatorReleaseDate": "2023-10-08",
+      "route": "主线第十三章节「恶兆湍流」",
+      "obtainMethod": "主线剧情"
+    },
+    "刺玫": {
+      "operatorReleaseDate": "2023-10-08",
+      "route": "[标准寻访]烁尘烟中",
+      "obtainMethod": "标准寻访"
+    },
+    "赫德雷": {
+      "operatorReleaseDate": "2023-10-08",
+      "route": "[标准寻访]烁尘烟中",
+      "obtainMethod": "标准寻访"
+    },
+    "跃跃": {
+      "operatorReleaseDate": "2023-11-01",
+      "route": "「感谢庆典」纪念活动 「采购凭证商店」可兑换干员更新",
+      "obtainMethod": "凭证交易所(采购)"
+    },
+    "折光": {
+      "operatorReleaseDate": "2023-11-01",
+      "route": "「感谢庆典」纪念活动 「采购凭证商店」可兑换干员更新",
+      "obtainMethod": "凭证交易所(采购)"
+    },
+    "深律": {
+      "operatorReleaseDate": "2023-11-01",
+      "route": "[限定寻访·庆典]宿愿",
+      "obtainMethod": "标准寻访"
+    },
+    "止颂": {
+      "operatorReleaseDate": "2023-11-01",
+      "route": "SideStory「崔林特尔梅之金」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "薇薇安娜": {
+      "operatorReleaseDate": "2023-11-01",
+      "route": "[限定寻访·庆典]宿愿",
+      "obtainMethod": "标准寻访"
+    },
+    "塑心": {
+      "operatorReleaseDate": "2023-11-01",
+      "route": "[限定寻访·庆典]宿愿",
+      "obtainMethod": "限定寻访"
+    },
+    "哈洛德": {
+      "operatorReleaseDate": "2023-12-05",
+      "route": "SideStory「银心湖列车」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "烈夏": {
+      "operatorReleaseDate": "2023-12-05",
+      "route": "[标准寻访]游邦者",
+      "obtainMethod": "标准寻访"
+    },
+    "锏": {
+      "operatorReleaseDate": "2023-12-05",
+      "route": "[标准寻访]游邦者",
+      "obtainMethod": "标准寻访"
+    },
+    "温米": {
+      "operatorReleaseDate": "2024-01-09",
+      "route": "[标准寻访]一线微明",
+      "obtainMethod": "标准寻访"
+    },
+    "莱伊": {
+      "operatorReleaseDate": "2024-01-09",
+      "route": "[标准寻访]一线微明",
+      "obtainMethod": "标准寻访"
+    },
+    "万顷": {
+      "operatorReleaseDate": "2024-02-01",
+      "route": "SideStory「怀黍离」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "小满": {
+      "operatorReleaseDate": "2024-02-01",
+      "route": "[限定寻访·春节]千秋一粟",
+      "obtainMethod": "标准寻访"
+    },
+    "左乐": {
+      "operatorReleaseDate": "2024-02-01",
+      "route": "[限定寻访·春节]千秋一粟",
+      "obtainMethod": "标准寻访"
+    },
+    "黍": {
+      "operatorReleaseDate": "2024-02-01",
+      "route": "[限定寻访·春节]千秋一粟",
+      "obtainMethod": "限定寻访"
+    },
+    "红隼": {
+      "operatorReleaseDate": "2024-02-03",
+      "route": "生息演算「沙洲遗闻」",
+      "obtainMethod": "活动获得"
+    },
+    "导火索": {
+      "operatorReleaseDate": "2024-03-07",
+      "route": "SideStory「水晶箭行动」",
+      "obtainMethod": "活动获得"
+    },
+    "双月": {
+      "operatorReleaseDate": "2024-03-07",
+      "route": "[特殊任务专家寻访]突破，援助，任务循环",
+      "obtainMethod": "联动寻访"
+    },
+    "医生": {
+      "operatorReleaseDate": "2024-03-07",
+      "route": "[特殊任务专家寻访]突破，援助，任务循环",
+      "obtainMethod": "联动寻访"
+    },
+    "艾拉": {
+      "operatorReleaseDate": "2024-03-07",
+      "route": "[特殊任务专家寻访]突破，援助，任务循环",
+      "obtainMethod": "联动寻访"
+    },
+    "露托": {
+      "operatorReleaseDate": "2024-04-11",
+      "route": "[标准寻访]如死亦终",
+      "obtainMethod": "标准寻访 中坚寻访"
+    },
+    "奥达": {
+      "operatorReleaseDate": "2024-04-11",
+      "route": "SideStory「巴别塔」",
+      "obtainMethod": "活动获得 记录修复奖励"
+    },
+    "阿罗玛": {
+      "operatorReleaseDate": "2024-04-11",
+      "route": "[标准寻访]如死亦终",
+      "obtainMethod": "标准寻访"
+    },
+    "阿斯卡纶": {
+      "operatorReleaseDate": "2024-04-11",
+      "route": "[标准寻访]如死亦终",
+      "obtainMethod": "标准寻访"
+    },
+    "PhonoR-0": {
+      "operatorReleaseDate": "2024-05-01",
+      "route": "「五周年庆典」 「公开招募」干员更新",
+      "obtainMethod": "公开招募 活动获得"
+    },
+    "历阵锐枪芬": {
+      "operatorReleaseDate": "2024-05-01",
+      "route": "「限定寻访·庆典」何以为我",
+      "obtainMethod": "标准寻访"
+    },
+    "魔王": {
+      "operatorReleaseDate": "2024-05-01",
+      "route": "主线第十四章节「慈悲灯塔」",
+      "obtainMethod": "主线剧情"
+    },
+    "逻各斯": {
+      "operatorReleaseDate": "2024-05-01",
+      "route": "「限定寻访·庆典」何以为我",
+      "obtainMethod": "标准寻访"
+    },
+    "维什戴尔": {
+      "operatorReleaseDate": "2024-05-01",
+      "route": "「限定寻访·庆典」何以为我",
+      "obtainMethod": "限定寻访"
+    },
+    "阿米娅(医疗)": {
+      "operatorReleaseDate": "2024-05-01",
+      "route": "主线第十四章节「慈悲灯塔」",
+      "obtainMethod": "主线剧情"
+    },
+    "深巡": {
+      "operatorReleaseDate": "2024-06-05",
+      "route": "SideStory「生路」",
+      "obtainMethod": "活动获得"
+    },
+    "海霓": {
+      "operatorReleaseDate": "2024-06-05",
+      "route": "[标准寻访]沉向深渊的锚",
+      "obtainMethod": "标准寻访"
+    },
+    "乌尔比安": {
+      "operatorReleaseDate": "2024-06-05",
+      "route": "[标准寻访]沉向深渊的锚",
+      "obtainMethod": "标准寻访"
+    },
+    "渡桥": {
+      "operatorReleaseDate": "2024-07-09",
+      "route": "[标准寻访]心与镜的印痕",
+      "obtainMethod": "标准寻访"
+    },
+    "妮芙": {
+      "operatorReleaseDate": "2024-07-09",
+      "route": "[标准寻访]心与镜的印痕",
+      "obtainMethod": "标准寻访"
+    },
+    "锡人": {
+      "operatorReleaseDate": "2024-07-16",
+      "route": "集成战略「萨卡兹的无终奇语」",
+      "obtainMethod": "活动获得"
+    },
+    "莎草": {
+      "operatorReleaseDate": "2024-08-01",
+      "route": "SideStory「太阳甩在身后」",
+      "obtainMethod": "活动获得"
+    },
+    "衡沙": {
+      "operatorReleaseDate": "2024-08-01",
+      "route": "[限定寻访·夏季]在流沙上刻印",
+      "obtainMethod": "标准寻访"
+    },
+    "娜仁图亚": {
+      "operatorReleaseDate": "2024-08-01",
+      "route": "[限定寻访·夏季]在流沙上刻印",
+      "obtainMethod": "标准寻访"
+    },
+    "佩佩": {
+      "operatorReleaseDate": "2024-08-01",
+      "route": "[限定寻访·夏季]在流沙上刻印",
+      "obtainMethod": "限定寻访"
+    },
+    "森西": {
+      "operatorReleaseDate": "2024-09-02",
+      "route": "SideStory「泰拉饭」",
+      "obtainMethod": "活动获得"
+    },
+    "齐尔查克": {
+      "operatorReleaseDate": "2024-09-02",
+      "route": "[迷宫冒险干员寻访]泰拉饭，呜呼，泰拉饭",
+      "obtainMethod": "联动寻访"
+    },
+    "莱欧斯": {
+      "operatorReleaseDate": "2024-09-02",
+      "route": "[迷宫冒险干员寻访]泰拉饭，呜呼，泰拉饭",
+      "obtainMethod": "联动寻访"
+    },
+    "玛露西尔": {
+      "operatorReleaseDate": "2024-09-02",
+      "route": "[迷宫冒险干员寻访]泰拉饭，呜呼，泰拉饭",
+      "obtainMethod": "联动寻访"
+    },
+    "凯瑟琳": {
+      "operatorReleaseDate": "2024-10-09",
+      "route": "SideStory「追迹日落以西」",
+      "obtainMethod": "活动获得"
+    },
+    "波卜": {
+      "operatorReleaseDate": "2024-10-09",
+      "route": "[标准寻访]未致蒙尘",
+      "obtainMethod": "标准寻访"
+    },
+    "维娜·维多利亚": {
+      "operatorReleaseDate": "2024-10-09",
+      "route": "[标准寻访]未致蒙尘",
+      "obtainMethod": "标准寻访"
+    },
+    "云迹": {
+      "operatorReleaseDate": "2024-11-01",
+      "route": "「感谢庆典」纪念活动 「采购凭证商店」可兑换干员更新",
+      "obtainMethod": "凭证交易所(采购)"
+    },
+    "菲莱": {
+      "operatorReleaseDate": "2024-11-01",
+      "route": "「感谢庆典」纪念活动 「采购凭证商店」可兑换干员更新",
+      "obtainMethod": "凭证交易所(采购)"
+    },
+    "裁度": {
+      "operatorReleaseDate": "2024-11-01",
+      "route": "[限定寻访·庆典]恶人寥寥",
+      "obtainMethod": "标准寻访"
+    },
+    "弑君者": {
+      "operatorReleaseDate": "2024-11-01",
+      "route": "SideStory「揭幕者们」",
+      "obtainMethod": "活动获得"
+    },
+    "忍冬": {
+      "operatorReleaseDate": "2024-11-01",
+      "route": "[限定寻访·庆典]恶人寥寥",
+      "obtainMethod": "标准寻访"
+    },
+    "荒芜拉普兰德": {
+      "operatorReleaseDate": "2024-11-01",
+      "route": "[限定寻访·庆典]恶人寥寥",
+      "obtainMethod": "限定寻访"
+    },
+    "预备干员-先锋(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "预备干员-重装(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "预备干员-近卫(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "预备干员-术师(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "预备干员-狙击(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "预备干员-医疗(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "预备干员-辅助(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "预备干员-特种(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "郁金香(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "Sharp(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "Stormeye(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "Pith(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "Raidian(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "Misery(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "Mechanist(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "Touch(卫戍协议)": {
+      "operatorReleaseDate": "2024-11-15",
+      "route": "卫戍协议",
+      "obtainMethod": "无"
+    },
+    "瑰盐": {
+      "operatorReleaseDate": "2024-12-05",
+      "route": "SideStory「出苍白海」",
+      "obtainMethod": "活动获得"
+    },
+    "特克诺": {
+      "operatorReleaseDate": "2024-12-05",
+      "route": "[标准寻访]证实，完成，指引",
+      "obtainMethod": "标准寻访"
+    },
+    "引星棘刺": {
+      "operatorReleaseDate": "2024-12-05",
+      "route": "[标准寻访]证实，完成，指引",
+      "obtainMethod": "标准寻访"
+    },
+    "行箸": {
+      "operatorReleaseDate": "2025-01-22",
+      "route": "SideStory「相见欢」",
+      "obtainMethod": "活动获得"
+    },
+    "寻澜": {
+      "operatorReleaseDate": "2025-01-22",
+      "route": "[限定寻访·春节]炽吾生平",
+      "obtainMethod": "标准寻访"
+    },
+    "烛煌": {
+      "operatorReleaseDate": "2025-01-22",
+      "route": "[限定寻访·春节]炽吾生平",
+      "obtainMethod": "标准寻访"
+    },
+    "余": {
+      "operatorReleaseDate": "2025-01-22",
+      "route": "[限定寻访·春节]炽吾生平",
+      "obtainMethod": "限定寻访"
+    },
+    "诺威尔": {
+      "operatorReleaseDate": "2025-02-14",
+      "route": "[标准寻访]她们渡船而来",
+      "obtainMethod": "标准寻访"
+    },
+    "隐德来希": {
+      "operatorReleaseDate": "2025-02-14",
+      "route": "[标准寻访]她们渡船而来",
+      "obtainMethod": "标准寻访"
+    },
+    "水灯心": {
+      "operatorReleaseDate": "2025-03-07",
+      "route": "SideStory「挽歌燃烧殆尽」",
+      "obtainMethod": "活动获得"
+    },
+    "钼铅": {
+      "operatorReleaseDate": "2025-03-07",
+      "route": "[标准寻访]自火中归还",
+      "obtainMethod": "标准寻访"
+    },
+    "死芒": {
+      "operatorReleaseDate": "2025-03-07",
+      "route": "[标准寻访]自火中归还",
+      "obtainMethod": "标准寻访"
+    },
+    "骋风": {
+      "operatorReleaseDate": "2025-04-07",
+      "route": "[标准寻访]指令·重构",
+      "obtainMethod": "标准寻访"
+    },
+    "阿兰娜": {
+      "operatorReleaseDate": "2025-04-07",
+      "route": "[标准寻访]指令·重构",
+      "obtainMethod": "标准寻访"
+    },
+    "Mon3tr": {
+      "operatorReleaseDate": "2025-04-07",
+      "route": "[标准寻访]指令·重构",
+      "obtainMethod": "标准寻访"
+    },
+    "CONFESS-47": {
+      "operatorReleaseDate": "2025-05-01",
+      "route": "「六周年庆典」 「公开招募」干员更新",
+      "obtainMethod": "公开招募 活动获得"
+    },
+    "聆音": {
+      "operatorReleaseDate": "2025-05-01",
+      "route": "「限定寻访·庆典」布道自由",
+      "obtainMethod": "标准寻访"
+    },
+    "信仰搅拌机": {
+      "operatorReleaseDate": "2025-05-01",
+      "route": "SideStory「众生行记」",
+      "obtainMethod": "活动获得"
+    },
+    "蕾缪安": {
+      "operatorReleaseDate": "2025-05-01",
+      "route": "「限定寻访·庆典」布道自由",
+      "obtainMethod": "标准寻访"
+    },
+    "新约能天使": {
+      "operatorReleaseDate": "2025-05-01",
+      "route": "「限定寻访·庆典」布道自由",
+      "obtainMethod": "限定寻访"
+    },
+    "Miss.Christine": {
+      "operatorReleaseDate": "2025-06-05",
+      "route": "SideStory「红丝绒」",
+      "obtainMethod": "活动获得"
+    },
+    "蒂比": {
+      "operatorReleaseDate": "2025-06-05",
+      "route": "[标准寻访]永不落幕",
+      "obtainMethod": "标准寻访"
+    },
+    "酒神": {
+      "operatorReleaseDate": "2025-06-05",
+      "route": "[标准寻访]永不落幕",
+      "obtainMethod": "标准寻访"
+    },
+    "录武官": {
+      "operatorReleaseDate": "2025-07-08",
+      "route": "[标准寻访]青霆重明",
+      "obtainMethod": "标准寻访"
+    },
+    "司霆惊蛰": {
+      "operatorReleaseDate": "2025-07-08",
+      "route": "[标准寻访]青霆重明",
+      "obtainMethod": "标准寻访"
+    },
+    "电弧": {
+      "operatorReleaseDate": "2025-07-15",
+      "route": "集成战略「岁的界园志异」",
+      "obtainMethod": "活动获得"
+    },
+    "松桐": {
+      "operatorReleaseDate": "2025-08-02",
+      "route": "SideStory「墟」",
+      "obtainMethod": "活动获得"
+    },
+    "吉星": {
+      "operatorReleaseDate": "2025-08-02",
+      "route": "[限定寻访·夏季]不归花火",
+      "obtainMethod": "标准寻访"
+    },
+    "遥": {
+      "operatorReleaseDate": "2025-08-02",
+      "route": "[限定寻访·夏季]不归花火",
+      "obtainMethod": "标准寻访"
+    },
+    "斩业星熊": {
+      "operatorReleaseDate": "2025-08-02",
+      "route": "[限定寻访·夏季]不归花火",
+      "obtainMethod": "限定寻访"
+    },
+    "祐天寺若麦": {
+      "operatorReleaseDate": "2025-09-04",
+      "route": "SideStory「无忧梦呓」",
+      "obtainMethod": "活动获得"
+    },
+    "八幡海铃": {
+      "operatorReleaseDate": "2025-09-04",
+      "route": "SideStory「无忧梦呓」",
+      "obtainMethod": "活动获得"
+    },
+    "若叶睦": {
+      "operatorReleaseDate": "2025-09-04",
+      "route": "[梦中舞会人偶寻访]人偶的歌谣",
+      "obtainMethod": "联动寻访"
+    },
+    "三角初华": {
+      "operatorReleaseDate": "2025-09-04",
+      "route": "[梦中舞会人偶寻访]人偶的歌谣",
+      "obtainMethod": "联动寻访"
+    },
+    "丰川祥子": {
+      "operatorReleaseDate": "2025-09-04",
+      "route": "[梦中舞会人偶寻访]人偶的歌谣",
+      "obtainMethod": "联动寻访"
+    },
+    "冬时": {
+      "operatorReleaseDate": "2025-10-09",
+      "route": "[标准寻访]空白频段",
+      "obtainMethod": "标准寻访"
+    },
+    "折桠": {
+      "operatorReleaseDate": "2025-10-09",
+      "route": "[标准寻访]空白频段",
+      "obtainMethod": "标准寻访"
+    },
+    "真言": {
+      "operatorReleaseDate": "2025-10-09",
+      "route": "[标准寻访]空白频段",
+      "obtainMethod": "标准寻访"
+    },
+    "协律": {
+      "operatorReleaseDate": "2025-11-01",
+      "route": "「感谢庆典」纪念活动 「采购凭证商店」可兑换干员更新",
+      "obtainMethod": "凭证交易所(采购)"
+    },
+    "哈蒂娅": {
+      "operatorReleaseDate": "2025-11-01",
+      "route": "「感谢庆典」纪念活动 「采购凭证商店」可兑换干员更新",
+      "obtainMethod": "凭证交易所(采购)"
+    },
+    "雪猎": {
+      "operatorReleaseDate": "2025-11-01",
+      "route": "[限定寻访·庆典]以风雪为誓",
+      "obtainMethod": "标准寻访"
+    },
+    "溯光星源": {
+      "operatorReleaseDate": "2025-11-01",
+      "route": "SideStory「雪山降临1101」",
+      "obtainMethod": "活动获得"
+    },
+    "圣聆初雪": {
+      "operatorReleaseDate": "2025-11-01",
+      "route": "[限定寻访·庆典]以风雪为誓",
+      "obtainMethod": "标准寻访"
+    },
+    "凛御银灰": {
+      "operatorReleaseDate": "2025-11-01",
+      "route": "[限定寻访·庆典]以风雪为誓",
+      "obtainMethod": "限定寻访"
+    },
+    "盟约·辅助干员": {
+      "operatorReleaseDate": "2025-11-14",
+      "route": "卫戍协议·盟约",
+      "obtainMethod": "无"
+    },
+    "领主·Sharp": {
+      "operatorReleaseDate": "2025-11-14",
+      "route": "卫戍协议·盟约",
+      "obtainMethod": "无"
+    },
+    "天空盒": {
+      "operatorReleaseDate": "2025-12-05",
+      "route": "SideStory「未许之地」",
+      "obtainMethod": "活动获得"
+    },
+    "响石": {
+      "operatorReleaseDate": "2025-12-05",
+      "route": "[标准寻访]现实之上六百米",
+      "obtainMethod": "标准寻访"
+    },
+    "娜斯提": {
+      "operatorReleaseDate": "2025-12-05",
+      "route": "[标准寻访]现实之上六百米",
+      "obtainMethod": "标准寻访"
+    },
+    "摆渡人": {
+      "operatorReleaseDate": "2026-01-09",
+      "route": "SideStory「雅赛努斯复仇记」",
+      "obtainMethod": "活动获得"
+    },
+    "撷英调香师": {
+      "operatorReleaseDate": "2026-01-09",
+      "route": "[标准寻访]在凝固的时光中探寻",
+      "obtainMethod": "标准寻访"
+    },
+    "缇缇": {
+      "operatorReleaseDate": "2026-01-09",
+      "route": "[标准寻访]在凝固的时光中探寻",
+      "obtainMethod": "标准寻访"
+    },
+    "矩": {
+      "operatorReleaseDate": "2026-02-10",
+      "route": "SideStory「辞岁行」",
+      "obtainMethod": "活动获得"
+    },
+    "风絮": {
+      "operatorReleaseDate": "2026-02-10",
+      "route": "[限定寻访·春节]劫尽古今",
+      "obtainMethod": "标准寻访"
+    },
+    "赤刃明霄陈": {
+      "operatorReleaseDate": "2026-02-10",
+      "route": "[限定寻访·春节]劫尽古今",
+      "obtainMethod": "标准寻访"
+    },
+    "望": {
+      "operatorReleaseDate": "2026-02-10",
+      "route": "[限定寻访·春节]劫尽古今",
+      "obtainMethod": "限定寻访"
+    },
+    "复奏": {
+      "operatorReleaseDate": "2026-03-10",
+      "route": "[标准寻访]以我的方式",
+      "obtainMethod": "标准寻访"
+    },
+    "贝洛内": {
+      "operatorReleaseDate": "2026-03-10",
+      "route": "[标准寻访]以我的方式",
+      "obtainMethod": "标准寻访"
+    },
+    "伯塔尼": {
+      "operatorReleaseDate": "2026-04-07",
+      "route": "SideStory「人们，我们」",
+      "obtainMethod": "活动获得"
+    },
+    "乌啾": {
+      "operatorReleaseDate": "2026-04-07",
+      "route": "[标准寻访]辟路之人",
+      "obtainMethod": "标准寻访"
+    },
+    "怒潮凛冬": {
+      "operatorReleaseDate": "2026-04-07",
+      "route": "[标准寻访]辟路之人",
+      "obtainMethod": "标准寻访"
+    },
+    "GALLUS²": {
+      "operatorReleaseDate": "2026-05-01",
+      "route": "「七周年庆典」 「公开招募」干员更新",
+      "obtainMethod": "公开招募 活动获得"
+    },
+    "裂响": {
+      "operatorReleaseDate": "2026-05-01",
+      "route": "「限定寻访·庆典」承诺",
+      "obtainMethod": "标准寻访"
+    },
+    "维伊": {
+      "operatorReleaseDate": "2026-05-01",
+      "route": "主线第十七章节「相变临界」",
+      "obtainMethod": "主线剧情"
+    },
+    "可露希尔": {
+      "operatorReleaseDate": "2026-05-01",
+      "route": "「限定寻访·庆典」承诺",
+      "obtainMethod": "标准寻访"
+    },
+    "凯尔希·思衡托": {
+      "operatorReleaseDate": "2026-05-01",
+      "route": "「限定寻访·庆典」承诺",
+      "obtainMethod": "限定寻访"
+    },
+    "罗德岛隐秘队": {
+      "operatorReleaseDate": "2026-06-01",
+      "route": "SideStory「泡影苍霆」",
+      "obtainMethod": "活动获得"
+    },
+    "雷狼龙S空爆": {
+      "operatorReleaseDate": "2026-06-01",
+      "route": "[泡影迷踪干员寻访]幽境狩人",
+      "obtainMethod": "联动寻访"
+    },
+    "焰狐龙梓兰": {
+      "operatorReleaseDate": "2026-06-01",
+      "route": "[泡影迷踪干员寻访]幽境狩人",
+      "obtainMethod": "联动寻访"
+    },
+    "佩德洛": {
+      "operatorReleaseDate": "2026-07-10",
+      "route": "[标准寻访]确定性混沌",
+      "obtainMethod": "标准寻访"
+    },
+    "谬因": {
+      "operatorReleaseDate": "2026-07-10",
+      "route": "[标准寻访]确定性混沌",
+      "obtainMethod": "标准寻访"
+    },
+    "机械师": {
+      "operatorReleaseDate": "2026-07-17",
+      "route": "",
+      "obtainMethod": "活动获得"
+    },
+    "时隙": {
+      "operatorReleaseDate": "2026-08-01",
+      "route": "",
+      "obtainMethod": "活动获得"
+    },
+    "嘉辛塔": {
+      "operatorReleaseDate": "2026-08-01",
+      "route": "",
+      "obtainMethod": "标准寻访"
+    },
+    "珊比": {
+      "operatorReleaseDate": "2026-08-01",
+      "route": "",
+      "obtainMethod": "标准寻访"
+    },
+    "予愿安洁莉娜": {
+      "operatorReleaseDate": "2026-08-01",
+      "route": "",
+      "obtainMethod": "限定寻访"
+    }
+  },
+  "counts": {
+    "parsed": 456,
+    "skipped": 0
+  }
+}
