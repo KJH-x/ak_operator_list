@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { BookmarkCheck, BookmarkPlus, ExternalLink, Link as LinkIcon } from 'lucide-vue-next'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
+import elite1Url from '@/assets/elite1.webp'
+import elite2Url from '@/assets/elite2.webp'
 import { formatPrice, priceBand, stateLabel, variantFor, variantKey } from '@/lib/catalog'
 import type { AvatarSize, CatalogBox, CatalogCharacter, VariantState } from '@/types'
 import LazyImage from './LazyImage.vue'
@@ -19,6 +21,15 @@ const props = withDefaults(defineProps<{
 const emit = defineEmits<{ toggle: [key: string] }>()
 const states: VariantState[] = ['ELITE1', 'ELITE2']
 const image = computed(() => props.character.image)
+const failedIcons = ref<Record<string, boolean>>({})
+const eliteIcons: Record<VariantState, string> = {
+  ELITE1: elite1Url,
+  ELITE2: elite2Url,
+}
+const eliteIconSize: Record<VariantState, { width: number; height: number }> = {
+  ELITE1: { width: 24, height: 16 },
+  ELITE2: { width: 24, height: 20 },
+}
 
 function keyFor(state: VariantState): string {
   return variantKey({ boxId: props.box.id, characterName: props.character.name, state })
@@ -30,6 +41,10 @@ function active(state: VariantState): boolean {
 
 function toggle(state: VariantState) {
   if (variantFor(props.character, state)) emit('toggle', keyFor(state))
+}
+
+function markIconFailed(state: VariantState) {
+  failedIcons.value = { ...failedIcons.value, [state]: true }
 }
 </script>
 
@@ -73,9 +88,23 @@ function toggle(state: VariantState) {
             : `${character.name} ${stateLabel(state)} 无此款`"
           @click="toggle(state)"
         >
-          <BookmarkCheck v-if="active(state)" :size="18" aria-hidden="true" />
-          <BookmarkPlus v-else :size="18" aria-hidden="true" />
-          <span>{{ stateLabel(state) }}</span>
+          <template v-if="avatarSize === 'compact'">
+            <img
+              v-if="!failedIcons[state]"
+              class="elite-icon"
+              :src="eliteIcons[state]"
+              :width="eliteIconSize[state].width"
+              :height="eliteIconSize[state].height"
+              :alt="`${character.name} ${stateLabel(state)}`"
+              @error="markIconFailed(state)"
+            />
+            <span v-else class="elite-number">{{ state === 'ELITE1' ? '1' : '2' }}</span>
+          </template>
+          <template v-else>
+            <BookmarkCheck v-if="active(state)" :size="18" aria-hidden="true" />
+            <BookmarkPlus v-else :size="18" aria-hidden="true" />
+            <span>{{ stateLabel(state) }}</span>
+          </template>
         </button>
       </template>
       <LinkIcon v-if="mode === 'browse' && !character.prtsPageUrl" class="source-icon no-link" :size="14" aria-hidden="true" />
