@@ -41,6 +41,7 @@ Goal: 将现有 aak.nslc.top 静态图鉴升级为一个完全本地优先的收
 - R2 bucket corrected: credentials now come from project-local `.env` (`R2_BUCKET=ak-pass-assets`, `R2_PUBLIC_BASE_URL=https://aak-assets.nslc.top`); `ak-pass-assets` has all four object kinds and `aak-assets.nslc.top/.../compact.webp` returns 200.
 - Follow-up fixes verified live: disabled ELITE2 zone opacity is 0 until hover and 1 on hover; compact mode uses 68px grid columns with 8px gap, 52x52 portraits, hidden box/operator names; dark theme covers topbar and pocket header; operator view shows only “入游时间” and unknown dates stay last; metadata cache refuses regressions below 500 records.
 - Compact hover icons: elite1/elite2 are embedded as base64 WebP data URIs (64x42 / 64x53, ~1.8KB/2.7KB) with explicit 24x16/24x20 display sizes; no runtime request to `static.prts.wiki` for icons.
+- Lockfile fix: regenerated `package-lock.json` so sharp's optional platform packages (ppc64/riscv64/win32-arm64) are present; `npm ci` passes cleanly and Pages GitHub builds no longer fail with `Invalid Version`.
 - Deployment and Git push: not performed; `aak.nslc.top` still serves v1 until the maintainer deploys `dist` and commits.
 
 ## Open Gaps / Next Steps
