@@ -918,18 +918,6 @@ html[data-theme="dark"] .source-icon {
   border-top: 1px dashed var(--line);
 }
 
-.price-enter-active,
-.price-leave-active {
-  overflow: hidden;
-  transition: height 200ms ease, opacity 200ms ease;
-}
-
-.price-enter-from,
-.price-leave-to {
-  height: 0;
-  opacity: 0;
-}
-
 .price-row > span {
   color: var(--muted);
   font-weight: 600;

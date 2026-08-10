@@ -112,17 +112,15 @@ function markIconFailed(state: VariantState) {
     </div>
     <h3 :title="character.latinName ? `${character.name} · ${character.latinName}` : character.name">{{ character.name }}</h3>
     <p v-if="character.latinName" class="latin-name">{{ character.latinName }}</p>
-    <Transition name="price">
-      <div v-if="showPrices" class="price-panel" aria-label="社区参考市价">
-        <div v-for="state in states" :key="state" class="price-row">
-          <span>{{ stateLabel(state) }}</span>
-          <strong
-            v-if="variantFor(character, state)"
-            :class="`price-${priceBand(variantFor(character, state)!.price)}`"
-          >{{ formatPrice(variantFor(character, state)!.price) }}</strong>
-          <strong v-else class="price-unavailable">无此款</strong>
-        </div>
+    <div v-if="showPrices" class="price-panel" aria-label="社区参考市价">
+      <div v-for="state in states" :key="state" class="price-row">
+        <span>{{ stateLabel(state) }}</span>
+        <strong
+          v-if="variantFor(character, state)"
+          :class="`price-${priceBand(variantFor(character, state)!.price)}`"
+        >{{ formatPrice(variantFor(character, state)!.price) }}</strong>
+        <strong v-else class="price-unavailable">无此款</strong>
       </div>
-    </Transition>
+    </div>
   </article>
 </template>

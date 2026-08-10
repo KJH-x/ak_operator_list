@@ -32,7 +32,7 @@ Goal: 将现有 aak.nslc.top 静态图鉴升级为一个完全本地优先的收
 | Pocket hash sharing and merge | complete | `src/lib/share.ts`, `src/lib/pockets.ts`, `PocketPanel.vue` |
 | Rarity-gradient avatar borders | complete | `src/components/OperatorCard.vue`, `src/components/PocketPanel.vue`, `src/styles.css`, `rarity-border-style-guide.html` |
 | Two-layer collapsible toolbar + custom dropdowns | complete | `src/components/TopToolbar.vue`, `src/components/DropdownSelect.vue`, `src/styles.css` |
-| Price-toggle slide animation with scroll anchoring | complete | `src/App.vue` (anchor at topbar bottom, 0 px drift open/close) |
+| Price-toggle instant toggle with scroll anchoring | complete | `src/App.vue` (anchor at topbar bottom, 0 px drift open/close; no animation — a height transition across 577 panels caused per-frame reflow, so the toggle is instant with a single scroll correction) |
 | Unit and Playwright acceptance coverage | complete | 30 unit tests and 24 e2e tests green across 1440x900, 1024x768, 390x844 |
 
 ## Verification Log
@@ -48,7 +48,7 @@ Goal: 将现有 aak.nslc.top 静态图鉴升级为一个完全本地优先的收
 - Follow-up fixes verified live: disabled ELITE2 zone opacity is 0 until hover and 1 on hover; compact mode uses 68px grid columns with 8px gap, 52x52 portraits, hidden box/operator names; dark theme covers topbar and pocket header; operator view shows only “入游时间” and unknown dates stay last; metadata cache refuses regressions below 500 records.
 - Compact hover icons: elite1/elite2 are embedded as base64 WebP data URIs (64x42 / 64x53, ~1.8KB/2.7KB) with explicit 24x16/24x20 display sizes; no runtime request to `static.prts.wiki` for icons.
 - Lockfile fix: regenerated `package-lock.json` so sharp's optional platform packages (ppc64/riscv64/win32-arm64) are present; `npm ci` passes cleanly and Pages GitHub builds no longer fail with `Invalid Version`.
-- 2026-08-10 UI/data batch: rarity gradient rings verified per tier (6★ animated red-gold, 5★ solid gold, 4★ purple→white, 3★+ faint white; flow loop is pixel-seamless end-vs-start diff 0); two-layer collapsible toolbar + custom dropdown animations verified; price toggle keeps the anchor box at the topbar bottom with 0 px drift in both directions (Playwright measurement); pocket panel follows the toolbar height via `--topbar-height` ResizeObserver; dark+browse source icon is white-on-dark; duplicate-import toast fires for share and file imports; whitelist avatars load from R2 (`is-target` phase).
+- 2026-08-10 UI/data batch: rarity gradient rings verified per tier (6★ animated red-gold, 5★ solid gold, 4★ purple→white, 3★+ faint white; flow loop is pixel-seamless end-vs-start diff 0); two-layer collapsible toolbar + custom dropdown animations verified; price toggle keeps the anchor box at the topbar bottom with 0 px drift in both directions (Playwright measurement) with the panel animation removed for performance; pocket panel follows the toolbar height via `--topbar-height` ResizeObserver; dark+browse source icon is white-on-dark; duplicate-import toast fires for share and file imports; whitelist avatars load from R2 (`is-target` phase).
 - Git push: performed 2026-08-10; deployment of the new `dist` to `aak.nslc.top` remains a manual `npm run deploy` step.
 
 ## Open Gaps / Next Steps

@@ -30,7 +30,6 @@ const notice = ref('')
 const toast = ref('')
 let toastTimer: number | undefined
 let topbarObserver: ResizeObserver | null = null
-let stabilizeFrame: number | null = null
 
 function showToast(message: string) {
   toast.value = message
@@ -103,16 +102,8 @@ watch(showPrices, async () => {
   if (!anchor) return
   const initialTop = anchor.getBoundingClientRect().top
   await nextTick()
-  stabilizeFrame = requestAnimationFrame(() => {
-    const start = performance.now()
-    const duration = 280
-    const step = () => {
-      const anchorDocumentTop = anchor.getBoundingClientRect().top + window.scrollY
-      window.scrollTo(0, anchorDocumentTop - initialTop)
-      stabilizeFrame = performance.now() - start < duration ? requestAnimationFrame(step) : null
-    }
-    step()
-  })
+  const anchorDocumentTop = anchor.getBoundingClientRect().top + window.scrollY
+  window.scrollTo(0, anchorDocumentTop - initialTop)
 })
 
 onMounted(async () => {
@@ -137,7 +128,6 @@ onMounted(async () => {
 
 onBeforeUnmount(() => {
   if (toastTimer) window.clearTimeout(toastTimer)
-  if (stabilizeFrame) cancelAnimationFrame(stabilizeFrame)
   topbarObserver?.disconnect()
 })
 
