@@ -18,6 +18,16 @@ function parseCsvLine(line) {
   return fields
 }
 
+// character_table rarity values are TIER_N where N is the star count (1..6)
+// for playable operators; trap/token/synthetic records carry a default that is ignored.
+export function starRarity(record) {
+  if (!record || typeof record.operatorId !== 'string' || !/^char_/.test(record.operatorId)) return null
+  const match = /^TIER_(\d+)$/.exec(String(record.rarity ?? ''))
+  if (!match) return null
+  const star = Number(match[1])
+  return star >= 1 && star <= 6 ? star : null
+}
+
 export function parseWikiListCsv(text) {
   const lines = String(text).replace(/^\uFEFF/, '').split(/\r?\n/).filter((line) => line.trim())
   if (!lines.length) return []
@@ -39,6 +49,7 @@ export function parseWikiListCsv(text) {
       sortIndex: Number(pick(sortIndex)) || row,
       searchAliases: [],
       operatorReleaseDate: null,
+      rarity: null,
     }
   }).filter(Boolean)
 }
@@ -104,6 +115,7 @@ export function mergeOperatorSources({ csvRecords = [], tables = {} } = {}) {
       latinName: latinCandidates[0] || null,
       searchAliases: aliases,
       operatorReleaseDate: null,
+      rarity: starRarity({ ...record, operatorId: id }),
     }
     const existing = merged.get(value.name)
     if (existing) {

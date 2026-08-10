@@ -143,3 +143,10 @@ export function mergeSharedPocket(state: PocketState, payload: SharedPocketPaylo
   }
   return { ...state, currentPocketId: pocket.id, pockets: [...state.pockets, pocket] }
 }
+
+/** Count incoming shared items that already exist in any local pocket. */
+export function sharedDuplicateCount(state: PocketState, payload: SharedPocketPayload): number {
+  const incoming = cleanItems(payload.items)
+  const existing = new Set(state.pockets.flatMap((pocket) => pocket.items))
+  return incoming.filter((item) => existing.has(item)).length
+}

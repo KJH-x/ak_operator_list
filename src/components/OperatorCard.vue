@@ -21,6 +21,7 @@ const props = withDefaults(defineProps<{
 const emit = defineEmits<{ toggle: [key: string] }>()
 const states: VariantState[] = ['ELITE1', 'ELITE2']
 const image = computed(() => props.character.image)
+const rarityClass = computed(() => `rarity-${props.character.rarity ?? 'none'}`)
 const failedIcons = ref<Record<string, boolean>>({})
 const eliteIcons: Record<VariantState, string> = {
   ELITE1: elite1Url,
@@ -50,7 +51,7 @@ function markIconFailed(state: VariantState) {
 
 <template>
   <article class="operator-card" :aria-label="`${character.name}，${box.id} 盒`">
-    <div class="portrait-wrap" :class="{ 'browse-portrait': mode === 'browse' }">
+    <div class="portrait-wrap" :class="[{ 'browse-portrait': mode === 'browse' }, rarityClass]">
       <a
         v-if="mode === 'browse' && character.prtsPageUrl"
         class="portrait-link"
@@ -111,15 +112,17 @@ function markIconFailed(state: VariantState) {
     </div>
     <h3 :title="character.latinName ? `${character.name} · ${character.latinName}` : character.name">{{ character.name }}</h3>
     <p v-if="character.latinName" class="latin-name">{{ character.latinName }}</p>
-    <div v-show="showPrices" class="price-panel" aria-label="社区参考市价">
-      <div v-for="state in states" :key="state" class="price-row">
-        <span>{{ stateLabel(state) }}</span>
-        <strong
-          v-if="variantFor(character, state)"
-          :class="`price-${priceBand(variantFor(character, state)!.price)}`"
-        >{{ formatPrice(variantFor(character, state)!.price) }}</strong>
-        <strong v-else class="price-unavailable">无此款</strong>
+    <Transition name="price">
+      <div v-if="showPrices" class="price-panel" aria-label="社区参考市价">
+        <div v-for="state in states" :key="state" class="price-row">
+          <span>{{ stateLabel(state) }}</span>
+          <strong
+            v-if="variantFor(character, state)"
+            :class="`price-${priceBand(variantFor(character, state)!.price)}`"
+          >{{ formatPrice(variantFor(character, state)!.price) }}</strong>
+          <strong v-else class="price-unavailable">无此款</strong>
+        </div>
       </div>
-    </div>
+    </Transition>
   </article>
 </template>

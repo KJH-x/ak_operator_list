@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>稀有度头像边框 · 样式选择页</title>
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --panel: #ffffff;
+    --ink: #20242a;
+    --muted: #6b727a;
+    --line: #dfe3e8;
+    --gold: #ffd700;
+    --accent: #3b82f6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 28px 20px 60px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+    line-height: 1.55;
+  }
+  header { max-width: 1080px; margin: 0 auto 28px; }
+  h1 { margin: 0 0 8px; font-size: 22px; }
+  header p { margin: 6px 0; color: var(--muted); font-size: 13px; max-width: 960px; }
+  header .note {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #eef3ff;
+    color: #2547a8;
+    font-size: 12.5px;
+  }
+  .combo {
+    max-width: 1080px;
+    margin: 0 auto 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--panel);
+    padding: 16px 18px 18px;
+    cursor: pointer;
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+  }
+  .combo:hover { border-color: #b6c6e6; }
+  .combo.selected { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.28); }
+  .combo-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .combo-title { font-size: 16px; font-weight: 700; margin: 0 0 2px; }
+  .combo-desc { margin: 0 0 14px; color: var(--muted); font-size: 12.5px; }
+  .combo-badge {
+    flex: none;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: #e8edf4;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .combo.selected .combo-badge { background: var(--accent); color: #fff; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(96px, 1fr));
+    gap: 12px;
+  }
+  .cell { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .cell-label { font-size: 12px; font-weight: 700; color: var(--muted); }
+  .cell .hint { font-size: 11px; color: #a2a8b0; }
+  /* placeholder "avatar" face */
+  .avatar {
+    position: relative;
+    width: 84px;
+    height: 84px;
+    border-radius: 6px;
+    background: var(--face, linear-gradient(135deg, #9db8d4, #4a6d96));
+  }
+  .avatar .face-label {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 20px;
+    font-weight: 800;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    letter-spacing: 1px;
+  }
+  /* ---- ring helpers (same mask technique as the app) ---- */
+  .avatar .ring {
+    position: absolute;
+    z-index: 4;
+    inset: 0;
+    border-radius: 5px;
+    pointer-events: none;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+
+  /* ============ Combo A: animated rings (current app behavior) ============ */
+  .combo-a .r6 .ring {
+    padding: 2px;
+    background: linear-gradient(110deg, #a01212 0%, #ffb300 22%, #d4320f 40%, #ffd24a 58%, #8f1414 78%, #ffbe0f 100%);
+    background-size: 300% 100%;
+    animation: flow 4s linear infinite;
+  }
+  .combo-a .r5 .ring {
+    padding: 2px;
+    background: linear-gradient(135deg, #b8860b 0%, #ffd700 45%, #fdf3c0 50%, #ffd700 55%, #b8860b 100%);
+  }
+  .combo-a .r4 .ring {
+    padding: 2px;
+    background: linear-gradient(135deg, #7c3aed 0%, #b9a0f5 62%, #ffffff 100%);
+  }
+  .combo-a .r3 .ring,
+  .combo-a .r2 .ring,
+  .combo-a .r1 .ring {
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.1) 70%, rgba(255, 255, 255, 0) 100%);
+  }
+  .combo-a .r0 .ring { display: none; }
+
+  /* ============ Combo B: static rings (no motion) ============ */
+  .combo-b .r6 .ring {
+    padding: 2px;
+    background: linear-gradient(110deg, #d4320f 0%, #ffd24a 50%, #d4320f 100%);
+  }
+  .combo-b .r5 .ring {
+    padding: 2px;
+    background: linear-gradient(135deg, #b8860b 0%, #ffd700 45%, #fdf3c0 50%, #ffd700 55%, #b8860b 100%);
+  }
+  .combo-b .r4 .ring {
+    padding: 2px;
+    background: linear-gradient(135deg, #7c3aed 0%, #b9a0f5 62%, #ffffff 100%);
+  }
+  .combo-b .r3 .ring,
+  .combo-b .r2 .ring,
+  .combo-b .r1 .ring {
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.1) 70%, rgba(255, 255, 255, 0) 100%);
+  }
+  .combo-b .r0 .ring { display: none; }
+
+  /* ============ Combo C: glow + thin ring ============ */
+  .combo-c .r6 {
+    filter: drop-shadow(0 0 7px rgba(255, 120, 20, 0.75));
+  }
+  .combo-c .r6 .ring {
+    padding: 2px;
+    background: linear-gradient(110deg, #5e0c0c 0%, #ff3d00 18%, #ffd24a 40%, #fff8d8 50%, #ffd24a 60%, #ff3d00 82%, #5e0c0c 100%);
+    background-size: 300% 100%;
+    animation: flow 4.5s linear infinite;
+  }
+  .combo-c .r5 {
+    filter: drop-shadow(0 0 6px rgba(255, 200, 40, 0.65));
+  }
+  .combo-c .r5 .ring {
+    padding: 2px;
+    background: linear-gradient(135deg, #b8860b, #ffe37a, #b8860b);
+  }
+  .combo-c .r4 {
+    filter: drop-shadow(0 0 6px rgba(150, 100, 255, 0.6));
+  }
+  .combo-c .r4 .ring {
+    padding: 2px;
+    background: linear-gradient(135deg, #7c3aed, #d8c7ff, #ffffff);
+  }
+  .combo-c .r3 .ring,
+  .combo-c .r2 .ring,
+  .combo-c .r1 .ring {
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.12) 70%, rgba(255, 255, 255, 0) 100%);
+  }
+  .combo-c .r0 .ring { display: none; }
+
+  /* ============ Combo D: padded gradient frame (solid backing) ============ */
+  .combo-d .avatar {
+    box-sizing: border-box;
+    padding: 3px;
+    background: var(--face, linear-gradient(135deg, #9db8d4, #4a6d96));
+    background-clip: padding-box;
+  }
+  .combo-d .avatar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 6px;
+    pointer-events: none;
+  }
+  .combo-d .avatar .ring { display: none; }
+  .combo-d .avatar .face-label { z-index: 1; }
+  .combo-d.r6 .avatar::after {
+    background: linear-gradient(110deg, #a01212, #ffb300, #d4320f, #ffd24a, #8f1414, #ffbe0f);
+    background-size: 300% 100%;
+    animation: flow 4s linear infinite;
+  }
+  .combo-d.r5 .avatar::after {
+    background: linear-gradient(135deg, #b8860b, #ffd700 45%, #fdf3c0 50%, #ffd700 55%, #b8860b);
+  }
+  .combo-d.r4 .avatar::after {
+    background: linear-gradient(135deg, #7c3aed, #b9a0f5 62%, #ffffff);
+  }
+  .combo-d.r3 .avatar::after,
+  .combo-d.r2 .avatar::after,
+  .combo-d.r1 .avatar::after {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.1) 70%, rgba(255, 255, 255, 0));
+  }
+  .combo-d.r0 .avatar::after { display: none; }
+
+  @keyframes flow {
+    from { background-position: 0% 50%; }
+    to { background-position: 150% 50%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .combo-a .r6 .ring,
+    .combo-c .r6 .ring,
+    .combo-d.r6 .avatar::after { animation: none; }
+  }
+
+  footer {
+    max-width: 1080px;
+    margin: 6px auto 0;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  footer b { color: var(--ink); }
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+    .avatar { width: 72px; height: 72px; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>aak.nslc.top 头像稀有度边框 · 样式选择</h1>
+    <p>数据核查结果：catalog.v2.json 共 <b>431</b> 名干员（577 条盒×角色记录），其中 <b>407</b> 名干员可从游戏数据表取到稀有度（1★~6★，TIER_1~TIER_6 直接等于星级）；<b>24</b> 名干员没有稀有度，均为非实装角色（博士、12f、霜星、塔露拉、爱国者、士兵、白名单凭证 ACE/SCOUT 等）。没有稀有度的干员维持默认灰边框。</p>
+    <p>下面按“组合”展示整套稀有度配色方案（列为 6★ / 5★ / 4★ / 3★ / 2★ / 1★ / 无稀有度）。<b>点击任意组合标记你的选择</b>，然后把选中的组合编号告诉我。</p>
+    <span class="note">注：头像占位图由 CSS 绘制，仅用于对比边框；颜色与粗细参数可以任意微调。</span>
+  </header>
+
+  <section class="combo combo-a" data-name="A · 流动渐变环">
+    <div class="combo-head">
+      <h2 class="combo-title">组合 A · 流动渐变环 <span class="combo-badge">未选择</span></h2>
+    </div>
+    <p class="combo-desc">当前页面已实现的效果：6★ 红金流光，5★ 实心金，4★ 紫→白，3★ 及以下淡白→透明，无稀有度默认灰边。环为 2px 细渐变。</p>
+    <div class="grid">
+      <div class="cell r6"><span class="avatar" style="--face: linear-gradient(135deg,#e8b04b,#a85c12)"><span class="ring"></span><span class="face-label">6★</span></span><span class="cell-label">6★ · 流动红金</span></div>
+      <div class="cell r5"><span class="avatar" style="--face: linear-gradient(135deg,#5b8fce,#2c4f86)"><span class="ring"></span><span class="face-label">5★</span></span><span class="cell-label">5★ · 实心金</span></div>
+      <div class="cell r4"><span class="avatar" style="--face: linear-gradient(135deg,#8f7bd6,#4a3a8f)"><span class="ring"></span><span class="face-label">4★</span></span><span class="cell-label">4★ · 紫→白</span></div>
+      <div class="cell r3"><span class="avatar" style="--face: linear-gradient(135deg,#6fae7c,#2f6b43)"><span class="ring"></span><span class="face-label">3★</span></span><span class="cell-label">3★ · 淡白</span></div>
+      <div class="cell r2"><span class="avatar" style="--face: linear-gradient(135deg,#72a8ab,#356a6d)"><span class="ring"></span><span class="face-label">2★</span></span><span class="cell-label">2★ · 淡白</span></div>
+      <div class="cell r1"><span class="avatar" style="--face: linear-gradient(135deg,#9cabb3,#57636b)"><span class="ring"></span><span class="face-label">1★</span></span><span class="cell-label">1★ · 淡白</span></div>
+    </div>
+  </section>
+
+  <section class="combo combo-b" data-name="B · 静态渐变环">
+    <div class="combo-head">
+      <h2 class="combo-title">组合 B · 静态渐变环 <span class="combo-badge">未选择</span></h2>
+    </div>
+    <p class="combo-desc">与 A 相同的配色与 2px 细环，但 6★ 不做流动动画（静态红金渐变）。适合不喜欢动画、想更安静的浏览体验。</p>
+    <div class="grid">
+      <div class="cell r6"><span class="avatar" style="--face: linear-gradient(135deg,#e8b04b,#a85c12)"><span class="ring"></span><span class="face-label">6★</span></span><span class="cell-label">6★ · 静态红金</span></div>
+      <div class="cell r5"><span class="avatar" style="--face: linear-gradient(135deg,#5b8fce,#2c4f86)"><span class="ring"></span><span class="face-label">5★</span></span><span class="cell-label">5★ · 实心金</span></div>
+      <div class="cell r4"><span class="avatar" style="--face: linear-gradient(135deg,#8f7bd6,#4a3a8f)"><span class="ring"></span><span class="face-label">4★</span></span><span class="cell-label">4★ · 紫→白</span></div>
+      <div class="cell r3"><span class="avatar" style="--face: linear-gradient(135deg,#6fae7c,#2f6b43)"><span class="ring"></span><span class="face-label">3★</span></span><span class="cell-label">3★ · 淡白</span></div>
+      <div class="cell r2"><span class="avatar" style="--face: linear-gradient(135deg,#72a8ab,#356a6d)"><span class="ring"></span><span class="face-label">2★</span></span><span class="cell-label">2★ · 淡白</span></div>
+      <div class="cell r1"><span class="avatar" style="--face: linear-gradient(135deg,#9cabb3,#57636b)"><span class="ring"></span><span class="face-label">1★</span></span><span class="cell-label">1★ · 淡白</span></div>
+    </div>
+  </section>
+
+  <section class="combo combo-c" data-name="C · 发光 + 细环">
+    <div class="combo-head">
+      <h2 class="combo-title">组合 C · 发光 + 细环 <span class="combo-badge">未选择</span></h2>
+    </div>
+    <p class="combo-desc">6★ 红金流光并带橙色光晕，5★ 金色光晕，4★ 紫色光晕；3★ 及以下仍是淡白细环。更强调“稀有度光环”，观感更强烈。</p>
+    <div class="grid">
+      <div class="cell r6"><span class="avatar" style="--face: linear-gradient(135deg,#e8b04b,#a85c12)"><span class="ring"></span><span class="face-label">6★</span></span><span class="cell-label">6★ · 流光+光晕</span></div>
+      <div class="cell r5"><span class="avatar" style="--face: linear-gradient(135deg,#5b8fce,#2c4f86)"><span class="ring"></span><span class="face-label">5★</span></span><span class="cell-label">5★ · 金晕</span></div>
+      <div class="cell r4"><span class="avatar" style="--face: linear-gradient(135deg,#8f7bd6,#4a3a8f)"><span class="ring"></span><span class="face-label">4★</span></span><span class="cell-label">4★ · 紫晕</span></div>
+      <div class="cell r3"><span class="avatar" style="--face: linear-gradient(135deg,#6fae7c,#2f6b43)"><span class="ring"></span><span class="face-label">3★</span></span><span class="cell-label">3★ · 淡白</span></div>
+      <div class="cell r2"><span class="avatar" style="--face: linear-gradient(135deg,#72a8ab,#356a6d)"><span class="ring"></span><span class="face-label">2★</span></span><span class="cell-label">2★ · 淡白</span></div>
+      <div class="cell r1"><span class="avatar" style="--face: linear-gradient(135deg,#9cabb3,#57636b)"><span class="ring"></span><span class="face-label">1★</span></span><span class="cell-label">1★ · 淡白</span></div>
+    </div>
+  </section>
+
+  <section class="combo combo-d" data-name="D · 衬底式边框">
+    <div class="combo-head">
+      <h2 class="combo-title">组合 D · 衬底式边框 <span class="combo-badge">未选择</span></h2>
+    </div>
+    <p class="combo-desc">在头像外围垫一块 3px 渐变“衬底”（背景填充式边框），6★ 同样可流动。比细环更明显、边框更“实在”。</p>
+    <div class="grid">
+      <div class="cell r6"><span class="avatar" style="--face: linear-gradient(135deg,#e8b04b,#a85c12)"><span class="ring"></span><span class="face-label">6★</span></span><span class="cell-label">6★ · 衬底流光</span></div>
+      <div class="cell r5"><span class="avatar" style="--face: linear-gradient(135deg,#5b8fce,#2c4f86)"><span class="ring"></span><span class="face-label">5★</span></span><span class="cell-label">5★ · 金色衬底</span></div>
+      <div class="cell r4"><span class="avatar" style="--face: linear-gradient(135deg,#8f7bd6,#4a3a8f)"><span class="ring"></span><span class="face-label">4★</span></span><span class="cell-label">4★ · 紫衬底</span></div>
+      <div class="cell r3"><span class="avatar" style="--face: linear-gradient(135deg,#6fae7c,#2f6b43)"><span class="ring"></span><span class="face-label">3★</span></span><span class="cell-label">3★ · 淡白</span></div>
+      <div class="cell r2"><span class="avatar" style="--face: linear-gradient(135deg,#72a8ab,#356a6d)"><span class="ring"></span><span class="face-label">2★</span></span><span class="cell-label">2★ · 淡白</span></div>
+      <div class="cell r1"><span class="avatar" style="--face: linear-gradient(135deg,#9cabb3,#57636b)"><span class="ring"></span><span class="face-label">1★</span></span><span class="cell-label">1★ · 淡白</span></div>
+    </div>
+  </section>
+
+  <footer>点选组合后，把编号（A / B / C / D）告诉维护代理即可切换。默认实现为 <b>组合 A</b>。</footer>
+
+<script>
+  const combos = document.querySelectorAll('.combo')
+  let current = 'A'
+  const badge = (combo) => combo.querySelector('.combo-badge')
+  function select(combo) {
+    combos.forEach((c) => {
+      c.classList.toggle('selected', c === combo)
+      badge(c).textContent = c === combo ? '已选择' : '未选择'
+    })
+    current = combo.dataset.name || combo.querySelector('.combo-title').textContent
+    localStorage.setItem('ak-rarity-style-choice', current)
+  }
+  combos.forEach((combo) => {
+    combo.addEventListener('click', () => select(combo))
+    if (combo.classList.contains('combo-a')) select(combo)
+  })
+</script>
+</body>
+</html>

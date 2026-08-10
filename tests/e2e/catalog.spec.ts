@@ -66,7 +66,7 @@ test.beforeEach(async ({ page }) => {
 })
 
 test('search by initial, pinyin, and browse/collect mode behavior', async ({ page }) => {
-  const search = page.getByPlaceholder('角色 / 英文 / 拼音 / 首字母')
+  const search = page.getByPlaceholder('拼音 / 英文')
   await search.fill('AMY')
   await expect(page.locator('.operator-card h3').first()).toContainText('阿米娅')
   await search.fill('amiya')
@@ -89,7 +89,7 @@ test('search by initial, pinyin, and browse/collect mode behavior', async ({ pag
 })
 
 test('disabled elite-2 zone stays transparent until hover', async ({ page }) => {
-  const search = page.getByPlaceholder('角色 / 英文 / 拼音 / 首字母')
+  const search = page.getByPlaceholder('拼音 / 英文')
   await search.fill('香草')
   const card = page.locator('.operator-card').filter({ hasText: '香草' }).first()
   const disabledZone = card.locator('.favorite-zone.zone-elite2')
@@ -101,7 +101,8 @@ test('disabled elite-2 zone stays transparent until hover', async ({ page }) => 
 
 test('box sort, reverse sort, and operator aggregation', async ({ page }) => {
   await expect(page.locator('.box-meta h2').first()).toHaveText('1.0')
-  await page.getByLabel('排序方式').selectOption('time')
+  await page.getByRole('button', { name: '排序方式' }).click()
+  await page.locator('.select-menu button', { hasText: '发行时间' }).click()
   await expect(page.locator('.box-meta h2').first()).toHaveText('1.0')
   await page.getByRole('button', { name: '反向排序' }).click()
   await expect(page.locator('.box-meta h2').first()).not.toHaveText('1.0')
@@ -109,21 +110,20 @@ test('box sort, reverse sort, and operator aggregation', async ({ page }) => {
 
   await page.getByRole('button', { name: '按干员' }).click()
   await expect(page.locator('.operator-view-card')).toHaveCount(431)
-  const sortOptions = page.locator('.sort-control select option')
+  await page.getByRole('button', { name: '排序方式' }).click()
+  const sortOptions = page.locator('.select-menu button')
   await expect(sortOptions).toHaveText(['入游时间'])
   await expect(sortOptions).not.toHaveText(['类别 · 时间'])
-  const search = page.getByPlaceholder('角色 / 英文 / 拼音 / 首字母')
+  await page.keyboard.press('Escape')
+  const search = page.getByPlaceholder('拼音 / 英文')
   await search.fill('AMY')
   await expect(page.locator('.operator-view-card')).toHaveCount(1)
   await expect(page.locator('.operator-view-card').first().locator('.operator-appearance')).toHaveCount(10)
 })
 
 test('theme and compact avatar persist after reload', async ({ page }) => {
-  await page.getByRole('button', { name: '打开设置' }).click()
-  const dialog = page.getByRole('dialog', { name: '显示设置' })
-  await dialog.getByRole('button', { name: '夜间' }).click()
-  await dialog.getByRole('button', { name: '紧凑' }).click()
-  await dialog.getByRole('button', { name: '完成' }).click()
+  await page.getByRole('button', { name: '夜间', exact: true }).click()
+  await page.getByRole('button', { name: '紧凑', exact: true }).click()
 
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
   const portrait = page.locator('.operator-card .portrait-wrap').first()
@@ -157,7 +157,7 @@ test('share hash merges and de-duplicates in a new browser context', async ({ br
   const url = shareHash({ version: 1, pocketName: '收藏夹', items: [itemA, itemA, itemB], sourceHash: hash })
   const { context, page } = await newShareContext(browser, existing, url)
   try {
-    await expect(page.getByRole('status')).toContainText('已合并')
+    await expect(page.locator('.notice')).toContainText('已合并')
     const panel = page.locator('.workspace-layout > .pocket-panel')
     await expect(panel.locator('.pocket-item')).toHaveCount(2)
     await expect(panel.locator('.pocket-item')).toContainText(['阿米娅', '阿米娅'])
@@ -173,7 +173,7 @@ test('share hash reports cross-catalog data and rejects malformed input', async 
   const cross = shareHash({ version: 1, pocketName: '收藏夹', items: ['["1.0","阿米娅","ELITE1"]'], sourceHash: 'other-hash' })
   const first = await newShareContext(browser, existing, cross)
   try {
-    await expect(first.page.getByRole('status')).toContainText('数据版本不同')
+    await expect(first.page.locator('.notice')).toContainText('数据版本不同')
     await first.context.close()
   } catch (error) {
     await first.context.close()
@@ -182,7 +182,7 @@ test('share hash reports cross-catalog data and rejects malformed input', async 
 
   const second = await newShareContext(browser, existing, '#p=not-a-valid-payload')
   try {
-    await expect(second.page.getByRole('status')).toContainText('分享链接无效')
+    await expect(second.page.locator('.notice')).toContainText('分享链接无效')
     await expect(second.page.locator('.workspace-layout > .pocket-panel .pocket-item')).toHaveCount(0)
     await second.context.close()
   } catch (error) {
@@ -200,9 +200,7 @@ test('R2 image failure falls back to tiny, mobile drawer and settings work', asy
     await page.getByRole('button', { name: /打开口袋/ }).click()
     await expect(page.locator('.pocket-panel.drawer')).toBeVisible()
     await page.getByLabel('关闭口袋').click()
-    await page.getByRole('button', { name: '打开设置' }).click()
-    await page.getByRole('dialog', { name: '显示设置' }).getByRole('button', { name: '夜间' }).click()
-    await page.getByRole('dialog', { name: '显示设置' }).getByRole('button', { name: '完成' }).click()
+    await page.getByRole('button', { name: '夜间', exact: true }).click()
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
   }
   await page.screenshot({ path: testInfo.outputPath('catalog.png'), fullPage: false })

@@ -26,6 +26,7 @@ export interface CatalogCharacter {
   searchAliases: string[]
   operatorReleaseDate: string | null
   prtsPageUrl: string | null
+  rarity: number | null
   image: AssetRef | null
   sourceImageUrl: string | null
   variants: CatalogVariant[]

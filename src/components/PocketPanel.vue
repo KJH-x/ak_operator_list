@@ -43,6 +43,14 @@ const editing = ref(false)
 const name = ref('')
 const fileInput = ref<HTMLInputElement | null>(null)
 const message = ref('')
+const toast = ref('')
+let toastTimer: number | undefined
+
+function showToast(text: string) {
+  toast.value = text
+  if (toastTimer) window.clearTimeout(toastTimer)
+  toastTimer = window.setTimeout(() => { toast.value = '' }, 2600)
+}
 
 const currentPocket = computed(() => (
   props.state.pockets.find((pocket) => pocket.id === props.state.currentPocketId) ?? props.state.pockets[0]!
@@ -112,8 +120,13 @@ async function importJson(event: Event) {
   const file = input.files?.[0]
   if (!file) return
   try {
-    update(importPocketState(await file.text()))
+    const next = importPocketState(await file.text())
+    const existingKeys = new Set(props.state.pockets.flatMap((pocket) => pocket.items))
+    const incomingKeys = new Set(next.pockets.flatMap((pocket) => pocket.items))
+    const duplicates = [...incomingKeys].filter((key) => existingKeys.has(key)).length
+    update(next)
     message.value = '口袋已导入'
+    if (duplicates > 0) showToast(`已有 ${duplicates} 项已存在`)
   } catch {
     message.value = '导入失败：文件格式无效'
   } finally {
@@ -195,7 +208,9 @@ async function copyShareLink() {
     <div v-if="resolvedItems.length" class="pocket-items">
       <article v-for="item in resolvedItems" :key="item.key" class="pocket-item">
         <template v-if="item.value">
-          <LazyImage :image="item.value.character.image" :name="item.value.character.name" size="standard" />
+          <span class="pocket-avatar" :class="`rarity-${item.value.character.rarity ?? 'none'}`">
+            <LazyImage :image="item.value.character.image" :name="item.value.character.name" size="standard" />
+          </span>
           <div class="pocket-item-copy">
             <strong>{{ item.value.character.name }}</strong>
             <span>{{ item.value.box.id }} · {{ stateLabel(item.value.state) }}</span>
@@ -250,5 +265,8 @@ async function copyShareLink() {
       <span class="sr-only" aria-live="polite">{{ message }}</span>
       <output v-if="message && message.startsWith('http')" class="copy-fallback" aria-live="polite">{{ message }}</output>
     </footer>
+    <Transition name="toast">
+      <div v-if="toast" class="toast-bubble" role="status">{{ toast }}</div>
+    </Transition>
   </aside>
 </template>

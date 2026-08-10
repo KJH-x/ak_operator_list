@@ -2,8 +2,8 @@
   "version": 2,
   "generatedAt": "2026-08-07T14:43:33.802Z",
   "publicBaseUrl": "https://aak-assets.nslc.top",
-  "sourceCount": 506,
-  "contentCount": 505,
+  "sourceCount": 512,
+  "contentCount": 511,
   "assets": [
     {
       "sourceUrl": "https://media.prts.wiki/3/36/%E5%A4%B4%E5%83%8F_%E9%98%BF%E7%B1%B3%E5%A8%85.png",
@@ -6581,6 +6581,84 @@
         "tiny": "https://aak-assets.nslc.top/sha256/3b35cbefab381f7617b9592c22f17674079e2f5e5e0d2a6e1cae156cecd1b1d2/tiny.webp",
         "display": "https://aak-assets.nslc.top/sha256/3b35cbefab381f7617b9592c22f17674079e2f5e5e0d2a6e1cae156cecd1b1d2/display.webp",
         "compact": "https://aak-assets.nslc.top/sha256/3b35cbefab381f7617b9592c22f17674079e2f5e5e0d2a6e1cae156cecd1b1d2/compact.webp"
+      }
+    },
+    {
+      "sourceUrl": "https://media.prts.wiki/e/ea/%E5%A4%B4%E5%83%8F_Misery%28%E5%8D%AB%E6%88%8D%E5%8D%8F%E8%AE%AE%29.png",
+      "etag": "\"E80CDDDF29264C4EA70EB2C8F1A8FE61\"",
+      "hash": "43025ed28ed3d31ba708b8e76a2166b99c891ed26129f11c5c13aa277f4370cf",
+      "contentType": "image/png",
+      "size": 41368,
+      "urls": {
+        "original": "https://aak-assets.nslc.top/sha256/43025ed28ed3d31ba708b8e76a2166b99c891ed26129f11c5c13aa277f4370cf/original",
+        "tiny": "https://aak-assets.nslc.top/sha256/43025ed28ed3d31ba708b8e76a2166b99c891ed26129f11c5c13aa277f4370cf/tiny.webp",
+        "display": "https://aak-assets.nslc.top/sha256/43025ed28ed3d31ba708b8e76a2166b99c891ed26129f11c5c13aa277f4370cf/display.webp",
+        "compact": "https://aak-assets.nslc.top/sha256/43025ed28ed3d31ba708b8e76a2166b99c891ed26129f11c5c13aa277f4370cf/compact.webp"
+      }
+    },
+    {
+      "sourceUrl": "https://media.prts.wiki/c/ca/%E5%A4%B4%E5%83%8F_Mechanist%28%E5%8D%AB%E6%88%8D%E5%8D%8F%E8%AE%AE%29.png",
+      "etag": "\"825661A6EC9B0137662A2B92E534B9C7\"",
+      "hash": "fa584ac0b9bd77a5f576f120275235bf6887166e05efa6c94f177cd05f43c590",
+      "contentType": "image/png",
+      "size": 46265,
+      "urls": {
+        "original": "https://aak-assets.nslc.top/sha256/fa584ac0b9bd77a5f576f120275235bf6887166e05efa6c94f177cd05f43c590/original",
+        "tiny": "https://aak-assets.nslc.top/sha256/fa584ac0b9bd77a5f576f120275235bf6887166e05efa6c94f177cd05f43c590/tiny.webp",
+        "display": "https://aak-assets.nslc.top/sha256/fa584ac0b9bd77a5f576f120275235bf6887166e05efa6c94f177cd05f43c590/display.webp",
+        "compact": "https://aak-assets.nslc.top/sha256/fa584ac0b9bd77a5f576f120275235bf6887166e05efa6c94f177cd05f43c590/compact.webp"
+      }
+    },
+    {
+      "sourceUrl": "https://media.prts.wiki/5/59/%E5%A4%B4%E5%83%8F_Pith.png",
+      "etag": "\"6C68FB43E480515710238AD2FCA27BCC\"",
+      "hash": "b4fb71f8713de0a24f23919bd6661850f85c70f9b9f358c37cba788c3d9f409e",
+      "contentType": "image/png",
+      "size": 34504,
+      "urls": {
+        "original": "https://aak-assets.nslc.top/sha256/b4fb71f8713de0a24f23919bd6661850f85c70f9b9f358c37cba788c3d9f409e/original",
+        "tiny": "https://aak-assets.nslc.top/sha256/b4fb71f8713de0a24f23919bd6661850f85c70f9b9f358c37cba788c3d9f409e/tiny.webp",
+        "display": "https://aak-assets.nslc.top/sha256/b4fb71f8713de0a24f23919bd6661850f85c70f9b9f358c37cba788c3d9f409e/display.webp",
+        "compact": "https://aak-assets.nslc.top/sha256/b4fb71f8713de0a24f23919bd6661850f85c70f9b9f358c37cba788c3d9f409e/compact.webp"
+      }
+    },
+    {
+      "sourceUrl": "https://media.prts.wiki/8/8e/%E5%A4%B4%E5%83%8F_Stormeye.png",
+      "etag": "\"6267B52637CB6DF78E8EEDBB57260E56\"",
+      "hash": "f6398e24aaf7d347cbdb6aa90bdd065d4128552f490812ee4e30541fb8abb3b2",
+      "contentType": "image/png",
+      "size": 28955,
+      "urls": {
+        "original": "https://aak-assets.nslc.top/sha256/f6398e24aaf7d347cbdb6aa90bdd065d4128552f490812ee4e30541fb8abb3b2/original",
+        "tiny": "https://aak-assets.nslc.top/sha256/f6398e24aaf7d347cbdb6aa90bdd065d4128552f490812ee4e30541fb8abb3b2/tiny.webp",
+        "display": "https://aak-assets.nslc.top/sha256/f6398e24aaf7d347cbdb6aa90bdd065d4128552f490812ee4e30541fb8abb3b2/display.webp",
+        "compact": "https://aak-assets.nslc.top/sha256/f6398e24aaf7d347cbdb6aa90bdd065d4128552f490812ee4e30541fb8abb3b2/compact.webp"
+      }
+    },
+    {
+      "sourceUrl": "https://media.prts.wiki/3/35/%E5%A4%B4%E5%83%8F_Touch.png",
+      "etag": "\"2BADEC360A19711D5249CD2DEC0DE12C\"",
+      "hash": "0245590ccabb34ffe13aa683759e80ed6ff98cfb0fc17ee92422242362f84ba5",
+      "contentType": "image/png",
+      "size": 33405,
+      "urls": {
+        "original": "https://aak-assets.nslc.top/sha256/0245590ccabb34ffe13aa683759e80ed6ff98cfb0fc17ee92422242362f84ba5/original",
+        "tiny": "https://aak-assets.nslc.top/sha256/0245590ccabb34ffe13aa683759e80ed6ff98cfb0fc17ee92422242362f84ba5/tiny.webp",
+        "display": "https://aak-assets.nslc.top/sha256/0245590ccabb34ffe13aa683759e80ed6ff98cfb0fc17ee92422242362f84ba5/display.webp",
+        "compact": "https://aak-assets.nslc.top/sha256/0245590ccabb34ffe13aa683759e80ed6ff98cfb0fc17ee92422242362f84ba5/compact.webp"
+      }
+    },
+    {
+      "sourceUrl": "https://media.prts.wiki/b/b4/%E5%A4%B4%E5%83%8F_Sharp.png",
+      "etag": "\"1FAE66838AFB1C8CB6C520D7BD4DB234\"",
+      "hash": "486f6cbd3ed40574e140e8abd7cf775145a5e34aca3aabd59184cdeabd024b67",
+      "contentType": "image/png",
+      "size": 24643,
+      "urls": {
+        "original": "https://aak-assets.nslc.top/sha256/486f6cbd3ed40574e140e8abd7cf775145a5e34aca3aabd59184cdeabd024b67/original",
+        "tiny": "https://aak-assets.nslc.top/sha256/486f6cbd3ed40574e140e8abd7cf775145a5e34aca3aabd59184cdeabd024b67/tiny.webp",
+        "display": "https://aak-assets.nslc.top/sha256/486f6cbd3ed40574e140e8abd7cf775145a5e34aca3aabd59184cdeabd024b67/display.webp",
+        "compact": "https://aak-assets.nslc.top/sha256/486f6cbd3ed40574e140e8abd7cf775145a5e34aca3aabd59184cdeabd024b67/compact.webp"
       }
     }
   ]

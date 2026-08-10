@@ -19,6 +19,7 @@ function character(name: string, operatorId = name, latinName: string | null = n
     searchAliases: [],
     operatorReleaseDate: null,
     prtsPageUrl: latinName ? `https://prts.wiki/w/${latinName}` : null,
+    rarity: null,
     image: null,
     sourceImageUrl: null,
     variants: [{ state: 'ELITE1', price: null }, { state: 'ELITE2', price: null }],

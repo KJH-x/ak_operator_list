@@ -26,6 +26,10 @@ function normalDate(value) {
   return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null
 }
 
+function normalizeRarity(value) {
+  return typeof value === 'number' && Number.isInteger(value) && value >= 1 && value <= 6 ? value : null
+}
+
 function normalizeMetadata(records) {
   const byName = new Map()
   for (const record of records ?? []) {
@@ -36,11 +40,28 @@ function normalizeMetadata(records) {
       latinName: typeof record.latinName === 'string' && record.latinName ? record.latinName : null,
       searchAliases: Array.isArray(record.searchAliases) ? record.searchAliases.filter((item) => typeof item === 'string') : [],
       operatorReleaseDate: normalDate(record.operatorReleaseDate),
+      rarity: normalizeRarity(record.rarity),
     }
     if (!byName.has(value.name)) byName.set(value.name, value)
     else if (byName.get(value.name)?.operatorId !== value.operatorId) byName.set(value.name, { ...byName.get(value.name), ambiguous: true })
   }
   return byName
+}
+
+// The pass source and the game metadata occasionally differ only by casing
+// (e.g. "12f" vs "12F", whitelist codes vs operator names). A unique
+// case-insensitive match is treated as the same operator; ambiguous ones stay unresolved.
+function metadataByCaseInsensitive(map, name) {
+  if (!name) return null
+  const needle = name.toLocaleLowerCase('zh-CN')
+  let found = null
+  for (const [key, value] of map) {
+    if (key.toLocaleLowerCase('zh-CN') === needle) {
+      if (found) return null
+      found = value
+    }
+  }
+  return found
 }
 
 function assetFor(character, assets) {
@@ -87,6 +108,7 @@ function metadataFor(box, character, metadata, prtsCache) {
     operatorReleaseDate: override.operatorReleaseDate ?? metadata?.operatorReleaseDate ?? null,
     prtsPageUrl: validatePrtsPageUrl(override.prtsPageUrl),
     imageUrl: override.imageUrl ?? null,
+    rarity: normalizeRarity(metadata?.rarity),
   }
 }
 
@@ -101,7 +123,7 @@ export function upgradeCatalogV2(rawSnapshot, { records = [], manifest = null, p
   for (const asset of manifest?.assets ?? []) if (asset?.sourceUrl) assets.set(asset.sourceUrl, asset)
   const boxes = rawSnapshot.boxes.map((sourceBox) => {
     const characters = sourceBox.characters.map((sourceCharacter) => {
-      const meta = metadata.get(sourceCharacter.name)
+      const meta = metadata.get(sourceCharacter.name) ?? metadataByCaseInsensitive(metadata, sourceCharacter.name)
       const enrichment = metadataFor(sourceBox, sourceCharacter, meta, prtsCache)
       const sourceImageUrl = enrichment.imageUrl
         ?? sourceCharacter.sourceImageUrl
@@ -115,6 +137,7 @@ export function upgradeCatalogV2(rawSnapshot, { records = [], manifest = null, p
         searchAliases: enrichment.searchAliases,
         operatorReleaseDate: enrichment.operatorReleaseDate,
         prtsPageUrl: enrichment.prtsPageUrl,
+        rarity: enrichment.rarity,
         sourceImageUrl,
         image: assetFor({ sourceImageUrl }, assets) ?? (sourceCharacter.image ? {
           ...sourceCharacter.image,
