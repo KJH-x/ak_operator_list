@@ -4,7 +4,7 @@ Goal: 将现有 aak.nslc.top 静态图鉴升级为一个完全本地优先的收
 
 ## Current Snapshot
 
-- `catalog.v2.json`: source hash `498baae85a2169bb6ec264a918a7281e8cc962c9644f9ec5dcb782742cd5b120`; 92 boxes, 577 memberships, 902 state variants, 431 distinct operator IDs. Undifferentiated copies (no valid prices for both ELITE1/ELITE2) are represented as a single ELITE1 variant.
+- `catalog.v2.json`: source hash `498baae85a2169bb6ec264a918a7281e8cc962c9644f9ec5dcb782742cd5b120`; 92 boxes, 577 memberships, 1117 state variants, 431 distinct operator IDs. Variant existence follows the upstream source: `nolyELITE1` marks only-精1; otherwise the presence of an `ELITE2` key in `market_price` means the 精2 badge exists even when no price is listed (price 0/null = 暂无报价).
 - Rarity coverage: 407 of 431 operator IDs carry `rarity` (1–6, from game `character_table` `TIER_1~TIER_6`); the remaining 24 are non-playable (博士/12f/ACE/SCOUT/OUTCAST/MANTRA/TULIP/霜星/塔露拉/杰斯顿/克丽斯腾/爱国者/士兵/大帝) and stay `null`. Every character now exposes `rarity` for the gradient avatar ring.
 - Case-insensitive metadata fallback: `catalog-v2.mjs` resolves names that differ only by case to a unique metadata record (`12f`→`12F`/`char_009_12fce`, whitelist `MISERY`/`MECHANIST`/`RAIDIAN`/`PITH`/`STORMEYE`/`TOUCH`/`SHARP`→their real operators), restoring latin names, PRTS pages and rarity.
 - Whitelist avatars: 6 playable whitelist operators (MISERY, MECHANIST, RAIDIAN, PITH, STORMEYE, TOUCH, SHARP) now have avatars; ACE/SCOUT/OUTCAST/MANTRA/TULIP have no PRTS avatar and keep the placeholder.

@@ -195,7 +195,7 @@ export function upgradeCatalogV2(rawSnapshot, { records = [], manifest = null, p
   return snapshot
 }
 
-export function validateCatalogV2(snapshot, baseline = { boxes: 92, characterMemberships: 577, stateVariants: 902 }) {
+export function validateCatalogV2(snapshot, baseline = { boxes: 92, characterMemberships: 577, stateVariants: 1117 }) {
   if (snapshot?.version !== 2 || !Array.isArray(snapshot.boxes) || !Array.isArray(snapshot.searchIndex)) {
     throw new Error('invalid catalog v2 snapshot')
   }

@@ -1,7 +1,7 @@
 export const BASELINE = Object.freeze({
   boxes: 92,
   characterMemberships: 577,
-  stateVariants: 902,
+  stateVariants: 1117,
 })
 
 const STATES = new Set(['ELITE1', 'ELITE2'])
@@ -19,14 +19,12 @@ export function normalizeVariantStates(character) {
   const values = Array.isArray(character.variant_states) ? character.variant_states : []
   const states = [...new Set(values.filter((state) => STATES.has(state)))]
   if (states.length < 2) return ['ELITE1']
+  // The upstream source marks "only 精1" via nolyELITE1 (normalized to
+  // only_elite_1). Otherwise the presence of an ELITE2 key in market_price
+  // means the 精2 badge exists even when no market price is listed yet
+  // (price 0/null); the price is only for quoting, not for existence.
   const marketPrice = character.market_price ?? {}
-  const valid = (state) => {
-    const price = marketPrice[state]
-    return typeof price === 'number' && Number.isFinite(price) && price > 0
-  }
-  // Without valid prices for BOTH states, the physical copy is undifferentiated:
-  // represent it as a single ELITE1 variant instead of inventing two states.
-  return valid('ELITE1') && valid('ELITE2') ? ['ELITE1', 'ELITE2'] : ['ELITE1']
+  return Object.prototype.hasOwnProperty.call(marketPrice, 'ELITE2') ? ['ELITE1', 'ELITE2'] : ['ELITE1']
 }
 
 export function validateImageManifest(manifest) {

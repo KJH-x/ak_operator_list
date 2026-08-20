@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "sourceHash": "ff7d80460aaa2d5549aa7bde8ffaeba492ff99fd71c3bdfe806c8d070c447f94",
-  "generatedAt": "2026-08-06T12:03:36.643Z",
+  "sourceHash": "4790b80418bf710b2c3eb4125209a143f97d7c9ea9e1d731429efd965c8a41cb",
+  "generatedAt": "2026-08-20T06:03:19.873Z",
   "stats": {
     "boxes": 92,
     "numericBoxes": 54,
     "specialBoxes": 38,
     "characterMemberships": 577,
-    "stateVariants": 1118,
+    "stateVariants": 1117,
     "uniqueSourceImages": 506,
     "missingImages": 13
   },
@@ -12257,7 +12257,7 @@
       "type": "cooperation",
       "releaseDate": "2022-09-23",
       "replicateDates": [],
-      "retailPrice": "25元/抽",
+      "retailPrice": "50元/组",
       "characterCount": 1,
       "variantCount": 2,
       "characters": [
@@ -12777,7 +12777,7 @@
       "replicateDates": [],
       "retailPrice": "25元/抽",
       "characterCount": 6,
-      "variantCount": 12,
+      "variantCount": 11,
       "characters": [
         {
           "slot": 1,
@@ -12873,10 +12873,6 @@
           "variants": [
             {
               "state": "ELITE1",
-              "price": null
-            },
-            {
-              "state": "ELITE2",
               "price": null
             }
           ]

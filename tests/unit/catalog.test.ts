@@ -18,17 +18,22 @@ describe('catalog normalization', () => {
     expect(normalizeVariantStates(character)).toEqual(['ELITE1'])
   })
 
-  it('collapses un-priced or single-priced copies to one ELITE1 variant', () => {
+  it('keeps both states whenever an ELITE2 key exists, regardless of price', () => {
     expect(normalizeVariantStates({
       only_elite_1: false,
       variant_states: ['ELITE1', 'ELITE2'],
       market_price: { ELITE1: null, ELITE2: null },
-    })).toEqual(['ELITE1'])
+    })).toEqual(['ELITE1', 'ELITE2'])
+    expect(normalizeVariantStates({
+      only_elite_1: false,
+      variant_states: ['ELITE1', 'ELITE2'],
+      market_price: { ELITE1: 0, ELITE2: 0 },
+    })).toEqual(['ELITE1', 'ELITE2'])
     expect(normalizeVariantStates({
       only_elite_1: false,
       variant_states: ['ELITE1', 'ELITE2'],
       market_price: { ELITE1: 20, ELITE2: null },
-    })).toEqual(['ELITE1'])
+    })).toEqual(['ELITE1', 'ELITE2'])
     expect(normalizeVariantStates({
       only_elite_1: false,
       variant_states: ['ELITE1', 'ELITE2'],
@@ -36,7 +41,20 @@ describe('catalog normalization', () => {
     })).toEqual(['ELITE1', 'ELITE2'])
   })
 
-  it('keeps a single ELITE2 price under the ELITE1 copy when the series is undifferentiated', () => {
+  it('collapses to one ELITE1 variant when only_elite_1 or a single state is declared', () => {
+    expect(normalizeVariantStates({
+      only_elite_1: true,
+      variant_states: ['ELITE1', 'ELITE2'],
+      market_price: { ELITE1: 20, ELITE2: 30 },
+    })).toEqual(['ELITE1'])
+    expect(normalizeVariantStates({
+      only_elite_1: false,
+      variant_states: ['ELITE1'],
+      market_price: { ELITE1: 25, ELITE2: 88 },
+    })).toEqual(['ELITE1'])
+  })
+
+  it('carries a lone ELITE2 price into the ELITE1 badge when both badges exist', () => {
     const snapshot = normalizeCatalog([
       {
         box_id: 'test',
@@ -60,12 +78,15 @@ describe('catalog normalization', () => {
     }, { version: 2, sourceCount: 0, contentCount: 0, assets: [] }, '2026-01-01T00:00:00.000Z', {
       boxes: 1,
       characterMemberships: 1,
-      stateVariants: 1,
+      stateVariants: 2,
     })
-    expect(snapshot.boxes[0]!.characters[0]!.variants).toEqual([{ state: 'ELITE1', price: 100 }])
+    expect(snapshot.boxes[0]!.characters[0]!.variants).toEqual([
+      { state: 'ELITE1', price: 100 },
+      { state: 'ELITE2', price: 100 },
+    ])
   })
 
-  it('does not infer variants from market price keys', () => {
+  it('does not infer variants from market price keys when only one state is declared', () => {
     const snapshot = normalizeCatalog([
       {
         box_id: 'test',
