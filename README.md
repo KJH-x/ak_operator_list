@@ -52,10 +52,9 @@ npm run refresh
 git add -A
 git commit -m "feat: v2 local-first catalog with PRTS dates and pocket sharing"
 git push
-npm run deploy
 ```
 
-`npm run deploy` 从项目本地 `.env` 读取 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID`，直接上传 `dist/` 到 `ak-operator-list` Pages 项目，不依赖 shell 环境变量。部署前可用 `npm run preview` 做一次本地生产预览，确认 `/data/catalog.v2.json` 返回 `application/json`。
+推送到 `master` 会自动触发 Cloudflare Pages 构建并上线 `aak.nslc.top`（2026-08-20 已验证）。`npm run deploy` 是备选直传方式：从项目本地 `.env` 读取 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID`，直接上传 `dist/` 到 `ak-operator-list` Pages 项目，不依赖 shell 环境变量。该 token 需要 Account → Cloudflare Pages → Edit 与 Account Settings → Read 权限（仅有 R2 桶读写不够）。部署前可用 `npm run preview` 做一次本地生产预览，确认 `/data/catalog.v2.json` 返回 `application/json`。
 
 ## 数据与权利
 
