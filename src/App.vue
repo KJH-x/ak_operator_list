@@ -8,9 +8,10 @@ import OperatorView from '@/components/OperatorView.vue'
 import PocketPanel from '@/components/PocketPanel.vue'
 import TopToolbar from '@/components/TopToolbar.vue'
 import { aggregateOperators, buildVariantIndex, filterOperatorAggregates, sortBoxes } from '@/lib/catalog'
-import { defaultBoxSelection, filterBoxes, loadBoxSelection, saveBoxSelection, type BoxSelection } from '@/lib/filters'
+import { applyBoxSelection, defaultBoxSelection, filterBoxes, loadBoxSelection, saveBoxSelection, type BoxSelection } from '@/lib/filters'
+import { buildRouteHash, parseUrl } from '@/lib/router'
 import { applyTheme, loadSettings, saveSettings } from '@/lib/settings'
-import { readShareHash } from '@/lib/share'
+import { decodeSharePayload } from '@/lib/share'
 import { loadPocketState, mergeSharedPocket, savePocketState, sharedDuplicateCount, togglePocketItem } from '@/lib/pockets'
 import type { AppSettings, CatalogSnapshot, PocketState } from '@/types'
 
@@ -29,6 +30,7 @@ const pockets = ref<PocketState>(loadPocketState(window.localStorage))
 const notice = ref('')
 const toast = ref('')
 let toastTimer: number | undefined
+let routeTimer: number | undefined
 let topbarObserver: ResizeObserver | null = null
 
 function showToast(message: string) {
@@ -106,6 +108,13 @@ watch(showPrices, async () => {
   window.scrollTo(0, anchorDocumentTop - initialTop)
 })
 
+watch(selection, () => syncRoute())
+watch(type, () => syncRoute())
+watch(query, () => {
+  if (routeTimer) window.clearTimeout(routeTimer)
+  routeTimer = window.setTimeout(syncRoute, 300)
+})
+
 onMounted(async () => {
   selection.value = loadBoxSelection(window.localStorage)
   const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false
@@ -120,31 +129,63 @@ onMounted(async () => {
     const response = await fetch('/data/catalog.v2.json', { cache: 'no-store' })
     if (!response.ok) throw new Error(`HTTP ${response.status}`)
     catalog.value = await response.json() as CatalogSnapshot
-    importSharedHash()
+    applyUrlState()
   } catch (error) {
     loadError.value = error instanceof Error ? error.message : '未知错误'
   }
+  window.addEventListener('hashchange', onHashChange)
 })
 
 onBeforeUnmount(() => {
   if (toastTimer) window.clearTimeout(toastTimer)
+  if (routeTimer) window.clearTimeout(routeTimer)
   topbarObserver?.disconnect()
+  window.removeEventListener('hashchange', onHashChange)
 })
 
-function importSharedHash() {
-  if (!window.location.hash) return
-  try {
-    const payload = readShareHash(window.location.hash)
-    if (payload) {
+function applyUrlState() {
+  if (!catalog.value) return
+  const boxes = catalog.value.boxes
+  const { sharePayload, route } = parseUrl(window.location.hash, window.location.pathname, boxes)
+  if (sharePayload) {
+    try {
+      const payload = decodeSharePayload(sharePayload)
       const duplicates = sharedDuplicateCount(pockets.value, payload)
       pockets.value = mergeSharedPocket(pockets.value, payload)
       notice.value = `已合并口袋“${payload.pocketName}”${payload.sourceHash !== catalog.value?.sourceHash ? '（数据版本不同，失效项目已保留）' : ''}`
       if (duplicates > 0) showToast(`已有 ${duplicates} 项已存在`)
+    } catch {
+      notice.value = '分享链接无效，未导入任何内容'
     }
-  } catch {
-    notice.value = '分享链接无效，未导入任何内容'
-  } finally {
-    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`)
+  }
+  if (route?.hasRoute) {
+    selection.value = route.empty ? applyBoxSelection([])
+      : route.boxIds.length ? applyBoxSelection(route.boxIds)
+      : defaultBoxSelection()
+    type.value = route.type
+    query.value = route.query
+    saveBoxSelection(window.localStorage, selection.value)
+  }
+  syncRoute()
+}
+
+function syncRoute() {
+  if (!catalog.value) return
+  const canonical = buildRouteHash(selection.value, type.value, query.value, catalog.value.boxes)
+  const target = canonical ? `/${canonical}` : '/'
+  window.history.replaceState(null, '', target)
+}
+
+function onHashChange() {
+  if (!catalog.value) return
+  const { route } = parseUrl(window.location.hash, window.location.pathname, catalog.value.boxes)
+  if (route?.hasRoute) {
+    selection.value = route.empty ? applyBoxSelection([])
+      : route.boxIds.length ? applyBoxSelection(route.boxIds)
+      : defaultBoxSelection()
+    type.value = route.type
+    query.value = route.query
+    saveBoxSelection(window.localStorage, selection.value)
   }
 }
 

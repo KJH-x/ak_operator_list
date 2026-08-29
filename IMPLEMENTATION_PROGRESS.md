@@ -34,6 +34,7 @@ Goal: 将现有 aak.nslc.top 静态图鉴升级为一个完全本地优先的收
 | Two-layer collapsible toolbar + custom dropdowns | complete | `src/components/TopToolbar.vue`, `src/components/DropdownSelect.vue`, `src/styles.css` |
 | Price-toggle instant toggle with scroll anchoring | complete | `src/App.vue` (anchor at topbar bottom, 0 px drift open/close; no animation — a height transition across 577 panels caused per-frame reflow, so the toggle is instant with a single scroll correction) |
 | Unit and Playwright acceptance coverage | complete | 30 unit tests and 24 e2e tests green across 1440x900, 1024x768, 390x844 |
+| URL route navigation (#52 / /52, reverse hash sync, share coexistence) | complete | `src/lib/router.ts`, `src/App.vue`, `public/_redirects` |
 
 ## Verification Log
 
@@ -58,3 +59,18 @@ Goal: 将现有 aak.nslc.top 静态图鉴升级为一个完全本地优先的收
 - Deployment: GitHub push to `master` triggers the Cloudflare Pages auto-build for `ak-operator-list` (verified 2026-08-20 with commit `6e4a50e`); `npm run deploy` is an alternative that requires a valid `CLOUDFLARE_API_TOKEN` with Account → Cloudflare Pages → Edit + Account Settings → Read (an R2-only token is insufficient).
 - Re-run `npm run metadata:cache` and `npm run prts:dates` whenever Ak-Data or PRTS metadata changes, then regenerate snapshots with `npm run snapshot`.
 - Review the 26 undated special/NPC records and fill the override table only from reliable sources; do not invent dates.
+
+## Routing Risks
+
+URL 路由导航（`#52` / `/52`、反向 hash 同步、与 `#p=` 分享共存）引入的故障面，完整清单见 README「路由与已知故障（风险）」，要点如下：
+
+- **SPA 回退掩盖 404**：`_redirects` 的 `/* /index.html 200` 让一切未知路径返回页面而非 404；若 `_redirects` 未随 `dist` 部署，`/52` 路径形式直接 404（部署后确认 `dist/_redirects` 存在）。
+- **路由覆盖本地保存的筛选**：加载时 URL 路由优先于 localStorage 盒筛选并写回，带旧路由的分享链接会静默改变已保存筛选。
+- **`#p=` 只解析一次**：分享载荷须在独立 `&p=` 段才能与路由共存；导入只在首次加载执行，已打开页面需刷新；含 `+`/`&` 的畸形组合可能解析异常。
+- **`#none` 与无效 token**：`#none` 表示“一盒都不显示”；无法解析的 token 静默丢弃并回退为显示全部盒，不报错。
+- **搜索同步噪声**：输入经约 300ms 防抖以 `replaceState` 重写地址栏（不产生历史记录），`&q=` 会让分享链接暴露搜索内容。
+- **`type=` 取值受限**：只接受 `numeric/ambience/cooperation/special/whitelist`，其他值忽略并按“全部系列”处理。
+- **编码一致性**：特殊盒名按 `encodeURIComponent` 编码；手输未编码中文可能无法匹配。`52`/`52.0` 均接受，但只匹配 numeric 类型（如 `白名单凭证1.0` 不会当作数字盒 1.0）。
+- **反向同步只写 hash**：手动筛选后地址栏规范化为根路径 + hash（`/#...`）；`/52` 只是输入入口，加载时被重写为 `/#52`。
+- **边缘缓存收敛**：CF 边缘新部署后可能短暂返回旧资源/旧 `_headers`，路由与 `_redirects` 会自动收敛；部署后抽查 `/52` 与 `/data/catalog.v2.json`。
+- **路径/静态文件优先级**：真实静态文件优先于 catch-all，`/data/*`、`/assets/*` 不受影响。

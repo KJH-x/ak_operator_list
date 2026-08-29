@@ -214,3 +214,75 @@ test('@a11y has no automatically detectable serious violations', async ({ page }
   ))
   expect(serious).toEqual([])
 })
+
+test('URL route #52 filters to a single numeric box', async ({ page }) => {
+  await page.goto('/#52')
+  await expect(page.locator('.box-row')).toHaveCount(1)
+  await expect(page.locator('.box-meta h2')).toHaveText('52.0')
+})
+
+test('URL path /52 filters to a single box and canonicalizes to #52', async ({ page }) => {
+  await page.goto('/52')
+  await expect(page.locator('.box-row')).toHaveCount(1)
+  await expect(page.locator('.box-meta h2')).toHaveText('52.0')
+  await expect.poll(() => page.evaluate(() => window.location.hash)).toBe('#52')
+})
+
+test('URL route #52+50+7 shows exactly those three boxes', async ({ page }) => {
+  await page.goto('/#52+50+7')
+  await expect(page.locator('.box-row')).toHaveCount(3)
+  const titles = await page.locator('.box-meta h2').allTextContents()
+  expect([...titles].sort()).toEqual(['7.0', '50.0', '52.0'].sort())
+})
+
+test('URL route with an encoded special box name filters to that box', async ({ page }) => {
+  await page.goto(`/#${encodeURIComponent('特别通行认证')}`)
+  await expect(page.locator('.box-row')).toHaveCount(1)
+  await expect(page.locator('.box-meta h2')).toHaveText('特别通行认证')
+})
+
+test('manual box filter dialog syncs selection back to the URL route', async ({ page }) => {
+  await page.getByRole('button', { name: /盒款筛选/ }).click()
+  const dialog = page.locator('.filter-dialog')
+  await expect(dialog).toBeVisible()
+  await dialog.locator('.selection-actions button', { hasText: '清空' }).click()
+  const grid = dialog.locator('.box-choice-grid')
+  for (const id of ['52.0', '50.0', '7.0']) {
+    const label = grid.locator('label', {
+      has: page.locator('strong', { hasText: new RegExp(`^${id.replace(/\./g, '\\.')}$`) }),
+    })
+    await label.click()
+  }
+  await dialog.locator('.primary-button', { hasText: '应用筛选' }).click()
+  await expect(page.locator('.box-row')).toHaveCount(3)
+  await expect.poll(() => page.evaluate(() => window.location.hash)).toBe('#52+50+7')
+})
+
+test('share hash coexists with a box route filter', async ({ browser, request }) => {
+  const hash = await sourceHash(request)
+  const existing = JSON.stringify({ version: 1, currentPocketId: 'a', pockets: [{ id: 'a', name: '收藏夹', items: [] }] })
+  const url = `${shareHash({ version: 1, pocketName: '收藏夹', items: ['["1.0","阿米娅","ELITE1"]'], sourceHash: hash })}&52`
+  const { context, page } = await newShareContext(browser, existing, url)
+  try {
+    await expect(page.locator('.notice')).toContainText('已合并')
+    await expect(page.locator('.box-row')).toHaveCount(1)
+    await expect(page.locator('.box-meta h2')).toHaveText('52.0')
+    await expect.poll(() => page.evaluate(() => window.location.hash)).toBe('#52')
+  } finally {
+    await context.close()
+  }
+})
+
+test('URL route type=numeric shows all numeric boxes', async ({ page }) => {
+  await page.goto('/#type=numeric')
+  await expect(page.locator('.box-row')).toHaveCount(54)
+  await expect(page.locator('.catalog-status')).toContainText('54 盒')
+})
+
+test('clearing an empty query route resets the URL route', async ({ page }) => {
+  await page.goto('/#q=__no_such_box_query__')
+  await expect(page.locator('.box-row')).toHaveCount(0)
+  await page.getByRole('button', { name: '清除当前查询' }).click()
+  await expect(page.locator('.box-row')).toHaveCount(92)
+  await expect.poll(() => page.evaluate(() => window.location.hash)).toBe('')
+})
