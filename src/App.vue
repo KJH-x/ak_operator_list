@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AlertTriangle, Database, LoaderCircle, X } from 'lucide-vue-next'
+import { AlertTriangle, Copy, Database, LoaderCircle, X } from 'lucide-vue-next'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 import BoxFilterPanel from '@/components/BoxFilterPanel.vue'
@@ -8,9 +8,10 @@ import OperatorView from '@/components/OperatorView.vue'
 import PocketPanel from '@/components/PocketPanel.vue'
 import TopToolbar from '@/components/TopToolbar.vue'
 import { aggregateOperators, buildVariantIndex, filterOperatorAggregates, sortBoxes } from '@/lib/catalog'
+import { copyText } from '@/lib/clipboard'
 import { applyBoxSelection, defaultBoxSelection, filterBoxes, loadBoxSelection, saveBoxSelection, type BoxSelection } from '@/lib/filters'
-import { buildRouteHash, parseUrl } from '@/lib/router'
-import { applyTheme, loadSettings, saveSettings } from '@/lib/settings'
+import { buildRouteHash, parseBoxRouteStrict, parseUrl } from '@/lib/router'
+import { applyTheme, loadSettings, saveSettings, themeFromUrl } from '@/lib/settings'
 import { decodeSharePayload } from '@/lib/share'
 import { loadPocketState, mergeSharedPocket, savePocketState, sharedDuplicateCount, togglePocketItem } from '@/lib/pockets'
 import type { AppSettings, CatalogSnapshot, PocketState } from '@/types'
@@ -29,9 +30,13 @@ const settings = ref<AppSettings>(loadSettings(window.localStorage))
 const pockets = ref<PocketState>(loadPocketState(window.localStorage))
 const notice = ref('')
 const toast = ref('')
+const backStack = ref<string[]>([])
+const urlThemeOverride = ref(themeFromUrl(window.location.search))
 let toastTimer: number | undefined
 let routeTimer: number | undefined
 let topbarObserver: ResizeObserver | null = null
+let routeHighlightTimer: number | undefined
+let suppressSync = false
 
 function showToast(message: string) {
   toast.value = message
@@ -69,6 +74,7 @@ const visibleCharacters = computed(() => listView.value === 'operators'
   ? visibleOperators.value.reduce((sum, operator) => sum + operator.appearances.length, 0)
   : visibleBoxes.value.reduce((sum, box) => sum + box.characters.length, 0))
 const boxSelectionLabel = computed(() => selection.value.custom ? `已选 ${selection.value.selectedIds.length} 盒` : '全部盒')
+const canGoBack = computed(() => backStack.value.length > 0)
 
 watch(pockets, (value) => savePocketState(window.localStorage, value), { deep: true })
 watch(listView, (value) => {
@@ -81,7 +87,7 @@ watch(listView, (value) => {
 watch(settings, (value) => {
   saveSettings(window.localStorage, value)
   const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false
-  applyTheme(document.documentElement, value.theme, prefersDark)
+  applyTheme(document.documentElement, urlThemeOverride.value ?? value.theme, prefersDark)
 }, { deep: true })
 
 watch(showPrices, async () => {
@@ -108,17 +114,32 @@ watch(showPrices, async () => {
   window.scrollTo(0, anchorDocumentTop - initialTop)
 })
 
-watch(selection, () => syncRoute())
-watch(type, () => syncRoute())
+watch(selection, () => syncRoute('push'))
+watch(type, () => syncRoute('push'))
 watch(query, () => {
   if (routeTimer) window.clearTimeout(routeTimer)
-  routeTimer = window.setTimeout(syncRoute, 300)
+  routeTimer = window.setTimeout(() => syncRoute('replace'), 300)
 })
+
+function isTypingTarget(target: EventTarget | null): boolean {
+  return target instanceof HTMLElement
+    && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)
+}
+
+function onDocumentKeydown(event: KeyboardEvent) {
+  if (event.key === '/' && !isTypingTarget(event.target)) {
+    const input = document.querySelector<HTMLInputElement>('.search-control input[type="search"]')
+    if (input) {
+      event.preventDefault()
+      input.focus()
+    }
+  }
+}
 
 onMounted(async () => {
   selection.value = loadBoxSelection(window.localStorage)
   const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false
-  applyTheme(document.documentElement, settings.value.theme, prefersDark)
+  applyTheme(document.documentElement, urlThemeOverride.value ?? settings.value.theme, prefersDark)
   syncTopbarHeight()
   const topbar = document.querySelector<HTMLElement>('.topbar')
   if (topbar && 'ResizeObserver' in window) {
@@ -134,19 +155,23 @@ onMounted(async () => {
     loadError.value = error instanceof Error ? error.message : '未知错误'
   }
   window.addEventListener('hashchange', onHashChange)
+  window.addEventListener('keydown', onDocumentKeydown)
 })
 
 onBeforeUnmount(() => {
   if (toastTimer) window.clearTimeout(toastTimer)
   if (routeTimer) window.clearTimeout(routeTimer)
+  if (routeHighlightTimer) window.clearTimeout(routeHighlightTimer)
   topbarObserver?.disconnect()
   window.removeEventListener('hashchange', onHashChange)
+  window.removeEventListener('keydown', onDocumentKeydown)
 })
 
 function applyUrlState() {
   if (!catalog.value) return
   const boxes = catalog.value.boxes
   const { sharePayload, route } = parseUrl(window.location.hash, window.location.pathname, boxes)
+  suppressSync = true
   if (sharePayload) {
     try {
       const payload = decodeSharePayload(sharePayload)
@@ -166,19 +191,32 @@ function applyUrlState() {
     query.value = route.query
     saveBoxSelection(window.localStorage, selection.value)
   }
-  syncRoute()
+  queueMicrotask(() => {
+    suppressSync = false
+    syncRoute('replace')
+    revealBoxRoute(window.location.hash)
+    warnUnknownTokens(window.location.hash)
+  })
 }
 
-function syncRoute() {
-  if (!catalog.value) return
+function syncRoute(mode: 'push' | 'replace' = 'replace') {
+  if (suppressSync || !catalog.value) return
   const canonical = buildRouteHash(selection.value, type.value, query.value, catalog.value.boxes)
   const target = canonical ? `/${canonical}` : '/'
-  window.history.replaceState(null, '', target)
+  const current = window.location.pathname === '/' && window.location.hash === canonical
+  if (mode === 'push' && !current) {
+    const prev = window.location.hash
+    if (backStack.value[backStack.value.length - 1] !== prev) backStack.value.push(prev)
+  }
+  if (mode === 'push') window.history.pushState(null, '', target)
+  else window.history.replaceState(null, '', target)
 }
 
 function onHashChange() {
   if (!catalog.value) return
-  const { route } = parseUrl(window.location.hash, window.location.pathname, catalog.value.boxes)
+  const boxes = catalog.value.boxes
+  const { route } = parseUrl(window.location.hash, window.location.pathname, boxes)
+  suppressSync = true
   if (route?.hasRoute) {
     selection.value = route.empty ? applyBoxSelection([])
       : route.boxIds.length ? applyBoxSelection(route.boxIds)
@@ -186,6 +224,55 @@ function onHashChange() {
     type.value = route.type
     query.value = route.query
     saveBoxSelection(window.localStorage, selection.value)
+  }
+  suppressSync = false
+  revealBoxRoute(window.location.hash)
+  warnUnknownTokens(window.location.hash)
+}
+
+/** A3/A6：进入/变更盒路由后：滚动到首个目标盒 + 高亮；干员级深链再定位角色卡 */
+async function revealBoxRoute(hash: string) {
+  if (!catalog.value || listView.value !== 'boxes') return
+  const strict = parseBoxRouteStrict(hash, catalog.value.boxes)
+  if (!strict?.hasRoute || strict.boxIds.length === 0) return
+  await nextTick()
+  await new Promise((resolve) => requestAnimationFrame(resolve))
+  const firstId = strict.boxIds[0]!
+  const heading = document.getElementById(`box-${firstId}`)
+  const row = heading?.closest('.box-row')
+  if (!row) return
+  const topbarHeight = document.querySelector<HTMLElement>('.topbar')?.getBoundingClientRect().height ?? 0
+  const box = catalog.value.boxes.find((candidate) => candidate.id === firstId)
+  const target = strict.operatorSlot != null || strict.operatorName
+    ? box?.characters.find((character) => (
+      character.slot === strict.operatorSlot || character.name === strict.operatorName
+    ))
+    : null
+  const card = target
+    ? Array.from(row.querySelectorAll<HTMLElement>('.operator-card'))
+      .find((element) => element.getAttribute('aria-label')?.startsWith(target.name))
+    : null
+  if (card) {
+    const top = card.getBoundingClientRect().top + window.scrollY - topbarHeight - 12
+    window.scrollTo({ top, behavior: 'smooth' })
+    card.classList.add('route-target-op')
+    if (routeHighlightTimer) window.clearTimeout(routeHighlightTimer)
+    routeHighlightTimer = window.setTimeout(() => card.classList.remove('route-target-op'), 2400)
+  } else {
+    const top = row.getBoundingClientRect().top + window.scrollY - topbarHeight - 12
+    window.scrollTo({ top, behavior: 'smooth' })
+    row.classList.add('route-target')
+    if (routeHighlightTimer) window.clearTimeout(routeHighlightTimer)
+    routeHighlightTimer = window.setTimeout(() => row.classList.remove('route-target'), 2400)
+  }
+}
+
+/** C1：未知 token 提示 */
+function warnUnknownTokens(hash: string) {
+  if (!catalog.value) return
+  const strict = parseBoxRouteStrict(hash, catalog.value.boxes)
+  if (strict?.unknownTokens.length) {
+    showToast(`链接中有无法识别的盒：${strict.unknownTokens.join('、')}`)
   }
 }
 
@@ -199,7 +286,44 @@ function toggleItem(key: string) {
   pockets.value = togglePocketItem(pockets.value, currentPocket.value.id, key)
 }
 
-function reloadPage() { window.location.reload() }</script>
+function reloadPage() { window.location.reload() }
+
+/** A4：复制当前多盒 + 筛选态完整链接 */
+async function copyCurrentLink() {
+  if (!catalog.value) return
+  const canonical = buildRouteHash(selection.value, type.value, query.value, catalog.value.boxes)
+  const url = `${window.location.origin}${canonical}`
+  const ok = await copyText(url)
+  showToast(ok ? `已复制当前链接 ${canonical || '(默认视图)'}` : `复制失败：${url}`)
+}
+
+/** A5：返回上一筛选（内存栈） */
+function goBackFilter() {
+  const target = backStack.value.pop()
+  if (target === undefined) return
+  if (target) {
+    window.location.hash = target
+  } else {
+    suppressSync = true
+    selection.value = defaultBoxSelection()
+    type.value = 'all'
+    query.value = ''
+    suppressSync = false
+    syncRoute('replace')
+  }
+}
+
+/** A3：跳到盒 */
+function handleJump(hash: string) {
+  if (window.location.hash === hash) revealBoxRoute(hash)
+  else window.location.hash = hash
+}
+
+/** C5：用户显式改主题后清除 URL 覆盖 */
+function changeTheme(value: 'system' | 'light' | 'dark') {
+  urlThemeOverride.value = null
+  settings.value = { ...settings.value, theme: value }
+}</script>
 
 <template>
   <div class="app-frame" :class="{ 'avatar-compact': settings.avatarSize === 'compact' }">
@@ -216,12 +340,18 @@ function reloadPage() { window.location.reload() }</script>
       :types="typeOptions"
       :box-selection-label="boxSelectionLabel"
       :pocket-count="currentPocket.items.length"
+      :boxes="catalog?.boxes ?? []"
+      :search-index="catalog?.searchIndex ?? []"
+      :can-go-back="canGoBack"
       @update:sort-base="settings = { ...settings, sortBase: $event }"
       @toggle-reversed="settings = { ...settings, reversed: !settings.reversed }"
-      @update:theme="settings = { ...settings, theme: $event }"
+      @update:theme="changeTheme"
       @update:avatar-size="settings = { ...settings, avatarSize: $event }"
       @open-box-filter="filterOpen = true"
       @open-pocket="drawerOpen = true"
+      @copy-current="copyCurrentLink"
+      @go-back="goBackFilter"
+      @jump="handleJump"
     />
 
     <div v-if="catalog" class="catalog-status" aria-live="polite">
@@ -246,6 +376,7 @@ function reloadPage() { window.location.reload() }</script>
             :mode="mode"
             :avatar-size="settings.avatarSize"
             @toggle="toggleItem"
+            @copied="showToast"
           />
         </template>
         <OperatorView
@@ -260,7 +391,11 @@ function reloadPage() { window.location.reload() }</script>
         />
         <div v-if="(listView === 'boxes' ? !visibleBoxes.length : !visibleOperators.length)" class="empty-results">
           <AlertTriangle :size="28" aria-hidden="true" /><h2>没有符合条件的记录</h2>
-          <button type="button" @click="query = ''; type = 'all'; selection = defaultBoxSelection()">清除当前查询</button>
+          <p class="empty-hint">试试调整盒筛选，或用「跳转」直达某个盒；也可以复制当前链接分享给他人。</p>
+          <div class="empty-actions">
+            <button type="button" @click="query = ''; type = 'all'; selection = defaultBoxSelection()">清除当前查询</button>
+            <button type="button" @click="copyCurrentLink"><Copy :size="15" aria-hidden="true" />复制当前链接</button>
+          </div>
         </div>
       </div>
       <PocketPanel v-model:state="pockets" :index="variantIndex" :source-hash="catalog.sourceHash" />
@@ -271,7 +406,7 @@ function reloadPage() { window.location.reload() }</script>
 
     <footer v-if="catalog" class="site-footer"><span>社区资料索引 · 非商业用途</span><a :href="catalog.sources.repository" target="_blank" rel="noreferrer">数据源</a><a href="https://github.com/KJH-x/Ak-Data" target="_blank" rel="noreferrer">Ak-Data 拼音数据</a><a href="https://prts.wiki" target="_blank" rel="noreferrer">PRTS</a><span>{{ catalog.sources.license }}</span></footer>
 
-    <BoxFilterPanel :open="filterOpen" :boxes="catalog?.boxes ?? []" :selection="selection" @close="filterOpen = false" @apply="updateSelection" />
+    <BoxFilterPanel :open="filterOpen" :boxes="catalog?.boxes ?? []" :selection="selection" @close="filterOpen = false" @apply="updateSelection" @copy-current="copyCurrentLink" />
     <div v-if="drawerOpen" class="drawer-backdrop" @mousedown.self="drawerOpen = false"><PocketPanel v-model:state="pockets" drawer :index="variantIndex" :source-hash="catalog?.sourceHash ?? ''" @close="drawerOpen = false" /><button type="button" class="sr-only" @click="drawerOpen = false">关闭口袋</button></div>
   </div>
 </template>

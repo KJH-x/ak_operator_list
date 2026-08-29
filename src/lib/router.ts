@@ -1,9 +1,15 @@
 import type { CatalogBox } from '@/types'
 import type { BoxSelection } from './filters'
+import {
+  NUMERIC_TOKEN,
+  buildBoxRoute,
+  parseBoxRoute,
+  tokenToBoxId,
+  type ParsedBoxRoute,
+} from './boxRoutes'
 
-const NUMERIC_TOKEN = /^\d+(?:\.0)?$/
-const TYPE_VALUES = new Set(['numeric', 'ambience', 'cooperation', 'special', 'whitelist'])
-const NONE_TOKEN = 'none'
+// 供 App / 组件 / 测试直接消费，无需本地 import
+export { boxToToken, tokenToBoxId, NUMERIC_TOKEN, NONE_TOKEN } from './boxRoutes'
 
 export interface ParsedRoute {
   boxIds: string[]
@@ -18,73 +24,20 @@ export interface UrlParseResult {
   route: ParsedRoute | null
 }
 
-function numericBoxId(token: string, boxes: CatalogBox[]): string | null {
-  const target = token.includes('.') ? token : `${token}.0`
-  return boxes.some((box) => box.type === 'numeric' && box.id === target) ? target : null
-}
-
-export function tokenToBoxId(token: string, boxes: CatalogBox[]): string | null {
-  let decoded: string
-  try {
-    decoded = decodeURIComponent(token)
-  } catch {
-    return null
-  }
-  if (NUMERIC_TOKEN.test(decoded)) return numericBoxId(decoded, boxes)
-  return boxes.some((box) => box.id === decoded) ? decoded : null
-}
-
-export function boxToToken(box: CatalogBox): string {
-  const match = box.id.match(/^(\d+)\.0$/)
-  if (match?.[1]) return match[1]
-  return encodeURIComponent(box.id)
-}
-
-function parseSegments(segments: string[], boxes: CatalogBox[]): ParsedRoute | null {
-  let type = 'all'
-  let query = ''
-  let hasNone = false
-  let hasToken = false
-  const boxIds: string[] = []
-  for (const segment of segments) {
-    if (segment.startsWith('type=')) {
-      const value = segment.slice('type='.length)
-      if (TYPE_VALUES.has(value)) type = value
-      continue
-    }
-    if (segment.startsWith('q=')) {
-      try {
-        query = decodeURIComponent(segment.slice('q='.length))
-      } catch {
-        query = ''
-      }
-      continue
-    }
-    for (const token of segment.split('+')) {
-      if (!token) continue
-      hasToken = true
-      if (token === NONE_TOKEN) {
-        hasNone = true
-        continue
-      }
-      const id = tokenToBoxId(token, boxes)
-      if (id && !boxIds.includes(id)) boxIds.push(id)
-    }
-  }
-  if (!hasToken && type === 'all' && query === '') return null
-  return {
-    boxIds: hasNone && boxIds.length === 0 ? [] : boxIds,
-    type,
-    query,
-    hasRoute: true,
-    empty: hasNone && boxIds.length === 0,
-  }
+/** 裁掉 boxRoutes 特有的 unknownTokens/operator 字段，保持 ParsedRoute 5 字段，兼容旧测试 toEqual */
+function asParsedRoute(route: ParsedBoxRoute): ParsedRoute {
+  const { unknownTokens: _ignored, operatorSlot: _slot, operatorName: _name, ...rest } = route
+  return rest
 }
 
 export function parseRouteHash(hash: string, boxes: CatalogBox[]): ParsedRoute | null {
-  const body = hash.startsWith('#') ? hash.slice(1) : hash
-  if (!body) return null
-  return parseSegments(body.split('&'), boxes)
+  const route = parseBoxRoute(hash, boxes)
+  return route ? asParsedRoute(route) : null
+}
+
+/** 严格解析：对外暴露 unknownTokens / operator 字段（C1 未知盒提示、A6 干员深链用） */
+export function parseBoxRouteStrict(hash: string, boxes: CatalogBox[]): ParsedBoxRoute | null {
+  return parseBoxRoute(hash, boxes)
 }
 
 export function parsePathRoute(pathname: string, boxes: CatalogBox[]): ParsedRoute | null {
@@ -100,13 +53,11 @@ export function parsePathRoute(pathname: string, boxes: CatalogBox[]): ParsedRou
   } catch {
     return null
   }
-  if (NUMERIC_TOKEN.test(decoded)) {
-    const id = numericBoxId(decoded, boxes)
+  // 用 boxRoutes 的统一解析替代旧 router.ts:103-111 的两段式判断
+  if (NUMERIC_TOKEN.test(decoded) || boxes.some((box) => box.id === decoded)) {
+    const id = tokenToBoxId(decoded, boxes)
     if (id) return { boxIds: [id], type: 'all', query: '', hasRoute: true, empty: false }
     return null
-  }
-  if (boxes.some((box) => box.id === decoded)) {
-    return { boxIds: [decoded], type: 'all', query: '', hasRoute: true, empty: false }
   }
   return null
 }
@@ -124,7 +75,10 @@ export function parseUrl(hash: string, pathname: string, boxes: CatalogBox[]): U
         routeSegments.push(segment)
       }
     }
-    if (routeSegments.length) route = parseSegments(routeSegments, boxes)
+    if (routeSegments.length) {
+      const parsed = parseBoxRoute(`#${routeSegments.join('&')}`, boxes)
+      if (parsed) route = asParsedRoute(parsed)
+    }
   }
   if (!route) {
     const pathRoute = parsePathRoute(pathname, boxes)
@@ -133,24 +87,17 @@ export function parseUrl(hash: string, pathname: string, boxes: CatalogBox[]): U
   return { sharePayload, route }
 }
 
+// 修复：旧 buildRouteHash 在「custom 选择全为已删除盒」时退化成 #none（详见 first-wave §3.1 bug 报告）
 export function buildRouteHash(
   selection: BoxSelection,
   type: string,
   query: string,
   boxes: CatalogBox[],
 ): string {
-  const tokens: string[] = []
-  if (selection.custom) {
-    for (const id of selection.selectedIds) {
-      const box = boxes.find((candidate) => candidate.id === id)
-      if (box) tokens.push(boxToToken(box))
-    }
-    if (tokens.length === 0) tokens.push(NONE_TOKEN)
-  }
-  const parts: string[] = []
-  if (tokens.length) parts.push(tokens.join('+'))
-  if (type !== 'all') parts.push(`type=${type}`)
-  if (query) parts.push(`q=${encodeURIComponent(query)}`)
-  if (!parts.length) return ''
-  return `#${parts.join('&')}`
+  if (!selection.custom) return ''
+  const selectedIds = selection.selectedIds
+  const empty = selectedIds.length === 0
+  const resolvable = selectedIds.filter((id) => boxes.some((box) => box.id === id))
+  if (!empty && resolvable.length === 0) return ''
+  return buildBoxRoute(boxes, resolvable, { type, query, empty })
 }

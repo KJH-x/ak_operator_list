@@ -49,6 +49,12 @@ export function saveSettings(storage: Pick<Storage, 'setItem'>, settings: AppSet
   storage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(normalizeSettings(settings)))
 }
 
+/** C5：读取入站 ?theme= 参数（light | dark | system），未提供返回 null。不写 localStorage。 */
+export function themeFromUrl(search: string = window.location.search): ThemePreference | null {
+  const value = new URLSearchParams(search).get('theme')
+  return value === 'light' || value === 'dark' || value === 'system' ? value : null
+}
+
 export function resolveTheme(theme: ThemePreference, prefersDark: boolean): 'light' | 'dark' {
   if (theme === 'system') return prefersDark ? 'dark' : 'light'
   return theme

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Check, RotateCcw, Search, X } from 'lucide-vue-next'
-import { computed, nextTick, ref, watch } from 'vue'
+import { Check, Copy, RotateCcw, Search, X } from 'lucide-vue-next'
+import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
 
 import { applyBoxSelection, defaultBoxSelection, type BoxSelection } from '@/lib/filters'
 import type { CatalogBox } from '@/types'
@@ -14,11 +14,14 @@ const props = defineProps<{
 const emit = defineEmits<{
   close: []
   apply: [selection: BoxSelection]
+  copyCurrent: []
 }>()
 
 const searchInput = ref<HTMLInputElement | null>(null)
+const dialogEl = ref<HTMLElement | null>(null)
 const query = ref('')
 const draft = ref(new Set<string>())
+let lastFocus: HTMLElement | null = null
 
 const typeLabels: Record<string, string> = {
   numeric: '数字盒',
@@ -38,12 +41,48 @@ const filtered = computed(() => {
   ))
 })
 
+function focusableWithin(): HTMLElement[] {
+  if (!dialogEl.value) return []
+  return Array.from(dialogEl.value.querySelectorAll<HTMLElement>(
+    'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled])',
+  ))
+}
+
+function onKeydown(event: KeyboardEvent) {
+  if (event.key === 'Escape') {
+    event.preventDefault()
+    emit('close')
+    return
+  }
+  if (event.key !== 'Tab') return
+  const focusables = focusableWithin()
+  if (!focusables.length) return
+  const first = focusables[0]!
+  const last = focusables[focusables.length - 1]!
+  if (event.shiftKey && (document.activeElement === first || !dialogEl.value?.contains(document.activeElement))) {
+    event.preventDefault()
+    last.focus()
+  } else if (!event.shiftKey && (document.activeElement === last || !dialogEl.value?.contains(document.activeElement))) {
+    event.preventDefault()
+    first.focus()
+  }
+}
+
 watch(() => props.open, async (open) => {
-  if (!open) return
-  query.value = ''
-  draft.value = new Set(props.selection.custom ? props.selection.selectedIds : props.boxes.map((box) => box.id))
-  await nextTick()
-  searchInput.value?.focus()
+  if (open) {
+    lastFocus = document.activeElement as HTMLElement | null
+    query.value = ''
+    draft.value = new Set(props.selection.custom ? props.selection.selectedIds : props.boxes.map((box) => box.id))
+    await nextTick()
+    searchInput.value?.focus()
+  } else {
+    lastFocus?.focus?.()
+    lastFocus = null
+  }
+})
+
+onBeforeUnmount(() => {
+  if (props.open) lastFocus?.focus?.()
 })
 
 function toggleType(type: string) {
@@ -70,8 +109,8 @@ function apply() {
 </script>
 
 <template>
-  <div v-if="open" class="dialog-backdrop" @mousedown.self="emit('close')" @keydown.esc="emit('close')">
-    <section class="filter-dialog" role="dialog" aria-modal="true" aria-labelledby="filter-title">
+  <div v-if="open" class="dialog-backdrop" @mousedown.self="emit('close')">
+    <section ref="dialogEl" class="filter-dialog" role="dialog" aria-modal="true" aria-labelledby="filter-title" @keydown="onKeydown">
       <header>
         <div>
           <span>BOX FILTER</span>
@@ -110,6 +149,9 @@ function apply() {
       <footer>
         <span>已选 {{ draft.size }} / {{ boxes.length }}</span>
         <div>
+          <button type="button" class="text-button" @click="emit('copyCurrent')">
+            <Copy :size="16" aria-hidden="true" />复制链接
+          </button>
           <button type="button" class="text-button" @click="reset">
             <RotateCcw :size="16" aria-hidden="true" />恢复默认
           </button>

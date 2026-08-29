@@ -71,6 +71,12 @@ async function main() {
     swapStarted = true
     await atomicWrite(publicManifest, await readFile(`${publicManifest}.next`))
     await atomicWrite(publicCatalog, await readFile(`${publicCatalog}.next`))
+    // 盒路由单一事实源：从已原子落盘的 catalog.v2.json 派生（失败不污染 v2 快照回滚）
+    await run(process.execPath, [
+      path.join(ROOT, 'scripts', 'build-box-routes.mjs'),
+      '--source', publicCatalog,
+      '--output', path.join(PUBLIC_DATA, 'box-routes.json'),
+    ])
     await run(npm, ['run', 'test:unit'])
     await run(npm, ['run', 'build'])
     console.log('Refresh completed. Review and commit changes manually.')

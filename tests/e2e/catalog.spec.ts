@@ -286,3 +286,72 @@ test('clearing an empty query route resets the URL route', async ({ page }) => {
   await expect(page.locator('.box-row')).toHaveCount(92)
   await expect.poll(() => page.evaluate(() => window.location.hash)).toBe('')
 })
+
+test('box copy-link copies the canonical route and toasts', async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 1440, height: 900 } })
+  await context.addInitScript(() => {
+    let last = ''
+    Object.defineProperty(window, '__lastCopied', { value: () => last })
+    Object.defineProperty(window.navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText: (text: string) => { last = text; return Promise.resolve() } },
+    })
+  })
+  const page = await context.newPage()
+  await page.route('https://aak-assets.nslc.top/**', (route) => route.abort('failed'))
+  await page.route('https://r2.nsapi.top/**', (route) => route.abort('failed'))
+  await page.goto('/#52')
+  await page.getByLabel('复制 52.0 盒链接').click()
+  await expect(page.locator('.toast-bubble')).toContainText('已复制 #52')
+  const copied = await page.evaluate(() => (window as unknown as { __lastCopied: () => string }).__lastCopied())
+  expect(copied).toBe(`${new URL(page.url()).origin}#52`)
+  await context.close()
+})
+
+test('copy current filter link reflects multi-box + filter state', async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 1440, height: 900 } })
+  await context.addInitScript(() => {
+    let last = ''
+    Object.defineProperty(window, '__lastCopied', { value: () => last })
+    Object.defineProperty(window.navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText: (text: string) => { last = text; return Promise.resolve() } },
+    })
+  })
+  const page = await context.newPage()
+  await page.route('https://aak-assets.nslc.top/**', (route) => route.abort('failed'))
+  await page.route('https://r2.nsapi.top/**', (route) => route.abort('failed'))
+  await page.goto('/#52+50+7&type=numeric')
+  await page.getByRole('button', { name: '复制当前筛选链接' }).click()
+  await expect(page.locator('.toast-bubble')).toContainText('已复制当前链接')
+  const copied = await page.evaluate(() => (window as unknown as { __lastCopied: () => string }).__lastCopied())
+  expect(copied).toBe(`${new URL(page.url()).origin}#52+50+7&type=numeric`)
+  await context.close()
+})
+
+test('operator deep-link highlights the target operator card', async ({ page }) => {
+  await page.goto('/#1&op=1')
+  await expect(page.locator('.box-row')).toHaveCount(1)
+  await expect(page.locator('.operator-card.route-target-op')).toHaveCount(1)
+  await expect(page.locator('.operator-card.route-target-op').getAttribute('aria-label')).resolves.toMatch(/^阿米娅/)
+})
+
+test('unknown token toasts a warning and keeps the page usable', async ({ page }) => {
+  await page.goto('/#99')
+  await expect(page.locator('.toast-bubble')).toContainText('链接中有无法识别的盒：99')
+  await expect(page.locator('.box-row')).toHaveCount(92)
+})
+
+test('jump panel navigates to a box by number and to an operator by name', async ({ page }) => {
+  await page.getByRole('button', { name: '跳到盒' }).click()
+  const input = page.getByPlaceholder('盒号 / 盒名 / 角色名')
+  await input.fill('52')
+  await page.locator('.jump-suggestions button').first().click()
+  await expect(page.locator('.box-row')).toHaveCount(1)
+  await expect(page.locator('.box-meta h2')).toHaveText('52.0')
+
+  await page.getByRole('button', { name: '跳到盒' }).click()
+  await page.getByPlaceholder('盒号 / 盒名 / 角色名').fill('兔兔')
+  await page.locator('.jump-suggestions button').first().click()
+  await expect(page.locator('.operator-card.route-target-op')).toHaveCount(1)
+})

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { parseReleaseDate, normalPrtsPageUrl, resolvePrtsRecord, validatePrtsPageUrl } from '../../scripts/prts-metadata.mjs'
 import { upgradeCatalogV2 } from '../../scripts/catalog-v2.mjs'
-import { mergeOperatorSources, parseWikiListCsv } from '../../scripts/ak-data.mjs'
+import { mergeOperatorSources, mergeSearchWordAliases, parseSearchWordJson, parseWikiListCsv } from '../../scripts/ak-data.mjs'
 
 describe('maintenance metadata', () => {
   it('parses Chinese and ISO-like release dates and rejects invalid dates', () => {
@@ -67,5 +67,24 @@ describe('maintenance metadata', () => {
     const ami = merged.find((record) => record.name === '阿米娅')
     expect(ami?.operatorId).toBe('char_002_amiya')
     expect(ami?.searchAliases).toContain('Amiya')
+  })
+
+  it('parses searchWord.json and merges community aliases by name and latin name (B3)', () => {
+    const entries = parseSearchWordJson(JSON.stringify([
+      { character1: { name: '阿米娅', englishname: 'Amiya', serachword: ['兔兔', '罗德岛CEO'] } },
+      { character2: { name: '极境', englishname: 'Elysium', serachword: ['鸡精', '大帅哥'] } },
+      { character3: { name: '不存在的干员', englishname: '', serachword: ['xxx'] } },
+    ]))
+    expect(entries).toHaveLength(3)
+    expect(entries[0]?.aliases).toContain('兔兔')
+    const merged = mergeSearchWordAliases(
+      [
+        { name: '阿米娅', latinName: 'Amiya', searchAliases: ['Amiya'] },
+        { name: '极境', latinName: 'Elysium', searchAliases: [] },
+      ],
+      entries,
+    )
+    expect(merged[0]?.searchAliases).toEqual(['Amiya', '兔兔', '罗德岛CEO'])
+    expect(merged[1]?.searchAliases).toEqual(['鸡精', '大帅哥'])
   })
 })

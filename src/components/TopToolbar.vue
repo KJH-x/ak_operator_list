@@ -2,18 +2,22 @@
 import {
   ArrowDownUp,
   ChevronDown,
+  Copy,
   ListFilter,
+  LocateFixed,
   Monitor,
   Moon,
   PackageOpen,
   Search,
   Sun,
+  Undo2,
   UsersRound,
   WalletCards,
 } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 
-import type { AvatarSize } from '@/types'
+import type { AvatarSize, CatalogBox, SearchIndexEntry } from '@/types'
+import BoxJumpPanel from './BoxJumpPanel.vue'
 import DropdownSelect from './DropdownSelect.vue'
 
 const props = defineProps<{
@@ -29,6 +33,9 @@ const props = defineProps<{
   pocketCount: number
   theme: 'system' | 'light' | 'dark'
   avatarSize: AvatarSize
+  boxes: CatalogBox[]
+  searchIndex: SearchIndexEntry[]
+  canGoBack: boolean
 }>()
 
 const emit = defineEmits<{
@@ -43,10 +50,14 @@ const emit = defineEmits<{
   'update:avatarSize': [value: AvatarSize]
   openBoxFilter: []
   openPocket: []
+  copyCurrent: []
+  goBack: []
+  jump: [hash: string]
 }>()
 
 const controlsOpen = ref(true)
 const chevronRotation = ref(180)
+const jumpOpen = ref(false)
 
 function toggleControls() {
   controlsOpen.value = !controlsOpen.value
@@ -67,6 +78,19 @@ const sortOptions = computed(() => props.listView === 'operators'
         <div><h1>明日方舟通行认证</h1><span>LOCAL PASS CATALOG</span></div>
       </div>
       <div class="topbar-actions">
+        <button
+          type="button"
+          class="icon-button toolbar-icon"
+          :disabled="!canGoBack"
+          :aria-label="canGoBack ? '返回上一筛选' : '暂无上一筛选'"
+          :title="canGoBack ? '返回上一筛选' : '暂无上一筛选'"
+          @click="emit('goBack')"
+        >
+          <Undo2 :size="17" aria-hidden="true" />
+        </button>
+        <button type="button" class="icon-button toolbar-icon" aria-label="复制当前筛选链接" title="复制当前筛选链接" @click="emit('copyCurrent')">
+          <Copy :size="17" aria-hidden="true" />
+        </button>
         <button
           type="button"
           class="icon-button collapse-toggle"
@@ -92,6 +116,16 @@ const sortOptions = computed(() => props.listView === 'operators'
             <span class="sr-only">搜索中文、拼音或英文</span>
             <input type="search" :value="query" placeholder="拼音 / 英文" @input="emit('update:query', ($event.target as HTMLInputElement).value)" />
           </label>
+          <button
+            type="button"
+            class="toolbar-button"
+            :class="{ active: jumpOpen }"
+            aria-label="跳到盒"
+            :aria-expanded="jumpOpen"
+            @click="jumpOpen = !jumpOpen"
+          >
+            <LocateFixed :size="17" aria-hidden="true" /><span>跳转</span>
+          </button>
           <DropdownSelect :model-value="type" :options="seriesOptions" label="系列筛选" @update:model-value="emit('update:type', $event)" />
           <DropdownSelect
             :model-value="sortBase"
@@ -125,5 +159,13 @@ const sortOptions = computed(() => props.listView === 'operators'
         </div>
       </div>
     </div>
+
+    <BoxJumpPanel
+      :open="jumpOpen"
+      :boxes="boxes"
+      :index="searchIndex"
+      @close="jumpOpen = false"
+      @jump="(hash: string) => { jumpOpen = false; emit('jump', hash) }"
+    />
   </header>
 </template>

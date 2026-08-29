@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { loadAkData, loadCharacterTables, mergeOperatorSources } from './ak-data.mjs'
+import { loadAkData, loadCharacterTables, loadSearchWord, mergeOperatorSources, mergeSearchWordAliases } from './ak-data.mjs'
 import { upgradeCatalogV2 } from './catalog-v2.mjs'
 import { atomicWriteJson } from './io.mjs'
 import { argument, PUBLIC_DATA, akDataWorkspacePath, prtsCachePath, workspacePath } from './paths.mjs'
@@ -30,6 +30,8 @@ export async function buildCatalogV2({
     records = mergeOperatorSources({ csvRecords: ak.records, tables })
   }
   const prtsCache = await readPrtsCache(prtsFile)
+  const searchWord = await loadSearchWord({ workspace })
+  records = mergeSearchWordAliases(records, searchWord.entries)
   const snapshot = upgradeCatalogV2(source, { records, manifest, prtsCache })
   await atomicWriteJson(outputFile, snapshot)
   return snapshot

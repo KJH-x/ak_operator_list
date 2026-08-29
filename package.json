@@ -12,6 +12,8 @@
     "test:a11y": "playwright test --grep @a11y",
     "snapshot": "node scripts/build-catalog-v2.mjs",
     "snapshot:v1": "node scripts/build-catalog.mjs",
+    "boxroutes": "node scripts/build-box-routes.mjs",
+    "check:consistency": "node scripts/check-consistency.mjs",
     "metadata:cache": "node scripts/build-metadata-cache.mjs --wiki public/data/wiki_list.csv",
     "prts:dates": "node scripts/fetch-prts-release-dates.mjs",
     "deploy": "node scripts/deploy.mjs",

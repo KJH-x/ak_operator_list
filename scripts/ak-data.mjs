@@ -97,6 +97,76 @@ export async function loadCharacterTables({ fetchImpl = fetch } = {}) {
   return result
 }
 
+// B3：searchWord.json 社区别名（418 条，如 阿米娅->兔兔/罗德岛CEO、极境->鸡精/大帅哥）。
+// 文件结构为数组，每项是 { characterN: { name, englishname, serachword: string[] } }。
+export async function loadSearchWord({ workspace, fetchImpl = fetch } = {}) {
+  const root = workspace ? path.resolve(workspace) : null
+  const candidates = root
+    ? [
+      path.join(root, 'ArknightsAuthorization_Series', 'searchWord.json'),
+      path.join(root, 'data', 'searchWord.json'),
+      path.join(root, 'searchWord.json'),
+    ]
+    : []
+  for (const file of candidates) {
+    const text = await readIfFile(file)
+    if (text !== null) return { entries: parseSearchWordJson(text), source: file }
+  }
+  return { entries: [], source: null }
+}
+
+export function parseSearchWordJson(text) {
+  let raw
+  try {
+    raw = JSON.parse(String(text))
+  } catch {
+    return []
+  }
+  if (!Array.isArray(raw)) return []
+  const out = []
+  for (const item of raw) {
+    if (!item || typeof item !== 'object') continue
+    const record = Object.values(item)[0]
+    if (!record || typeof record !== 'object') continue
+    const name = String(record.name ?? '').trim()
+    const englishname = String(record.englishname ?? '').trim()
+    const aliases = Array.isArray(record.serachword)
+      ? record.serachword.map((value) => String(value).trim()).filter(Boolean)
+      : []
+    if (!name || !aliases.length) continue
+    out.push({ name, englishname, aliases })
+  }
+  return out
+}
+
+export function mergeSearchWordAliases(records, entries) {
+  if (!Array.isArray(records) || !Array.isArray(entries)) return records
+  const aliasesByKey = new Map()
+  for (const entry of entries) {
+    const nameKey = entry.name.toLocaleLowerCase('zh-CN')
+    const englishKey = entry.englishname.toLocaleLowerCase('zh-CN')
+    const target = aliasesByKey.get(nameKey) ?? aliasesByKey.get(englishKey)
+    if (target) {
+      for (const alias of entry.aliases) if (!target.includes(alias)) target.push(alias)
+    } else {
+      aliasesByKey.set(nameKey, [...entry.aliases])
+      if (englishKey && englishKey !== nameKey) aliasesByKey.set(englishKey, [...entry.aliases])
+    }
+  }
+  return records.map((record) => {
+    if (!record || typeof record !== 'object') return record
+    const nameKey = String(record.name ?? '').toLocaleLowerCase('zh-CN')
+    const latinKey = String(record.latinName ?? '').toLocaleLowerCase('zh-CN')
+    const extra = [
+      ...(aliasesByKey.get(nameKey) ?? []),
+      ...(latinKey && latinKey !== nameKey ? (aliasesByKey.get(latinKey) ?? []) : []),
+    ]
+    if (!extra.length) return record
+    const searchAliases = Array.isArray(record.searchAliases) ? record.searchAliases : []
+    return { ...record, searchAliases: [...new Set([...searchAliases, ...extra])] }
+  })
+}
+
 export function mergeOperatorSources({ csvRecords = [], tables = {} } = {}) {
   const merged = new Map()
   const zh = tables.zh ?? {}; const en = tables.en ?? {}
